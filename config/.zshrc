@@ -10,6 +10,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# shellcheck disable=SC2034 # default ZSH value
 ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
@@ -23,6 +24,7 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
+# shellcheck disable=SC2034 # default ZSH value
 HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
@@ -60,6 +62,7 @@ HYPHEN_INSENSITIVE="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
+# shellcheck disable=SC2034
 HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
@@ -70,6 +73,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# shellcheck disable=SC2034 # default ZSH value
 plugins=(
   docker
   fzf
@@ -120,6 +124,7 @@ export LANGUAGE=en_US.UTF-8
 ### history
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
+# shellcheck disable=SC2034 # default ZSH value
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
@@ -138,6 +143,7 @@ add_path_to_global_path() {
 # Will source the provided resource if the resource exists
 source_if_exists() {
   if [ -f "$1" ]; then
+    # shellcheck disable=SC1090
     . "$1"
     printf "✅  Sourced:\\t%s\\n" "$1"
   else
@@ -155,7 +161,8 @@ export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 source_if_exists "$HOME/.asdf/asdf.sh"
 
 ### gcloud
-export CLOUDSDK_PYTHON="$(command -v python)"
+python_sdk="$(command -v python)"
+export CLOUDSDK_PYTHON="${python_sdk}"
 
 ### z
 source_if_exists "$HOME/z.sh"
