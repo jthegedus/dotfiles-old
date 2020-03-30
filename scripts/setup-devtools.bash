@@ -14,7 +14,7 @@ if [ -f "${HOME}/z.sh" ]; then
     log_success "z.sh already exists"
 else
     log_info "ℹ️  Installing z"
-    wget -O https://raw.githubusercontent.com/rupa/z/master/z.sh "${HOME}"
+    wget -P "${HOME}" https://raw.githubusercontent.com/rupa/z/master/z.sh
 fi
 
 # fzf
