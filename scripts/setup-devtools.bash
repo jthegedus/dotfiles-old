@@ -9,25 +9,6 @@ source "$(dirname "$0")/utils.bash"
 osType="$(uname -s)"
 
 ############ BEGIN: Tools
-# z
-if [ -f "${HOME}/z.sh" ]; then
-    log_success "z.sh already exists"
-else
-    log_info "ℹ️  Installing z"
-    wget -P "${HOME}" https://raw.githubusercontent.com/rupa/z/master/z.sh
-fi
-
-# fzf
-if [ -d "${HOME}/.fzf" ]; then
-    log_success "fzf already exists"
-else
-    log_info "ℹ️  Installing fzf"
-    git clone --depth 1 https://github.com/junegunn/fzf.git "${HOME}/.fzf"
-    ~/.fzf/install --key-bindings --completion --no-update-rc --no-bash --no-zsh
-fi
-
-# navi - https://github.com/denisidoro/navi
-
 # asdf
 if [ -d "${HOME}/.asdf" ]; then
     log_success "asdf already exists"

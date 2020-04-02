@@ -84,4 +84,23 @@ mkdir -p ~/.config
 ln -sv ~/projects/dotfiles/config/starship.toml ~/.config/starship.toml
 curl -fsSL https://starship.rs/install.sh | bash
 
+# install z
+if [ -f "${HOME}/z.sh" ]; then
+    log_success "z.sh already exists"
+else
+    log_info "ℹ️  Installing z"
+    wget -P "${HOME}" https://raw.githubusercontent.com/rupa/z/master/z.sh
+fi
+
+# install fzf
+if [ -d "${HOME}/.fzf" ]; then
+    log_success "fzf already exists"
+else
+    log_info "ℹ️  Installing fzf"
+    git clone --depth 1 https://github.com/junegunn/fzf.git "${HOME}/.fzf"
+    ~/.fzf/install --key-bindings --completion --no-update-rc --no-bash --no-zsh
+fi
+
+# navi - https://github.com/denisidoro/navi
+
 log_info "🏁  Fin"
