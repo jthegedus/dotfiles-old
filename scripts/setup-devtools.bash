@@ -138,9 +138,9 @@ Linux*)
     ;;
 Darwin*)
     brew install openssl readline sqlite3 xz zlib
-    if [ -f "$HOME/Brewfile" ]; then
+    if [ -f "$HOME/.Brewfile" ]; then
         log_info "ℹ️  Installing Homebrew packages/casks and apps from the Mac App Store"
-        brew bundle install
+        brew bundle install --global
     fi
     ;;
 *)
