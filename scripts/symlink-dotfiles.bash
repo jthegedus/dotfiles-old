@@ -33,6 +33,7 @@ for file in "$config_root"/**/*; do
         elif [[ -f $home_path ]]; then
             backup_file="$home_path.$(date +'%Y%m%d').bak"
             mv "$home_path" "$backup_file" # backup existing file
+            rm -f "$home_path"; # remove existing file
         else
             mkdir -p "$HOME/$(dirname "$file_relative_path")" # ensure directory hierarchy exists
         fi
