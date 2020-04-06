@@ -36,7 +36,7 @@ esac
 log_success "Successfully installed dependencies"
 
 ############ BEGIN: ZSH
-if [[ ! $SHELL == *"zsh"* ]]; then
+if [[ ! "$SHELL" == *"zsh"* ]]; then
     case "${osType}" in
     Linux*)
         log_info "ℹ️  Installing ZSH"
@@ -76,7 +76,7 @@ else
 fi
 
 # change default shell
-if [ $SHELL = "/usr/bin/zsh" ]; then
+if [[ "$SHELL" == *"zsh"* ]]; then
     log_success "ZSH already set as default shell"
 else
     log_info "ℹ️  Setting default shell to ZSH"
