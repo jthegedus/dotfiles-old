@@ -5,7 +5,7 @@ set -euo pipefail
 # shellcheck source=./utils.bash
 source "$(dirname "$0")/utils.bash"
 
-log_info "⚠️  This script does not remove packages/tools installed with apt-get or brew"
+log_info "This script does not remove packages/tools installed with apt-get or brew ⚠️"
 
 log_info "removing symlinks"
 rm -f ~/.zshrc ~/.aliases ~/.default-npm-packages ~/.config/starship.toml

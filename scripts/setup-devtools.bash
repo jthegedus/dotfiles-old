@@ -155,4 +155,4 @@ esac
 log_success "Successfully installed Extras"
 ############ END: Tools
 
-log_info "🏁  Fin"
+log_info "🏁  Fin 🏁"
