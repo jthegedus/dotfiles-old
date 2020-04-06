@@ -36,7 +36,7 @@ if ! [ -L "${HOME}/.default-npm-packages" ]; then
 fi
 case "${osType}" in
 Linux*)
-    apt-get install dirmngr gpg -y
+    sudo apt-get install dirmngr gpg -y
     ;;
 Darwin*)
     brew install coreutils
