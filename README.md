@@ -124,7 +124,7 @@ Items installed in the following scripts include:
 
 - shell: [`zsh`](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) · [`oh-my-zsh`](https://github.com/ohmyzsh/ohmyzsh) · [`powerline fonts`](https://github.com/powerline/fonts) · [`starship cross-shell theme`](https://starship.rs/)
 - tools: [`asdf`](https://github.com/asdf-vm/asdf) · [`shellcheck`](https://github.com/koalaman/shellcheck) · [`fzf`](https://github.com/junegunn/fzf) · [`z`](https://github.com/rupa/z)
-- tools with asdf: NodeJS 12 · Python 3 · OCaml 4 · Terraform 0.12
+- tools with asdf: [`nodejs`](https://github.com/asdf-vm/asdf-nodejs) · [`firebase`](https://github.com/jthegedus/asdf-firebase) · [`gcloud`](https://github.com/jthegedus/asdf-gcloud) · [`gradle`](https://github.com/rfrancis/asdf-gradle) · [`hadolint`](https://github.com/looztra/asdf-hadolint) · [`java`](https://github.com/halcyon/asdf-java) · [`maven`](https://github.com/halcyon/asdf-maven) · [`python`](https://github.com/danhper/asdf-python) · [`ocaml`](https://github.com/asdf-community/asdf-ocaml) · [`shellcheck`](https://github.com/luizm/asdf-shellcheck) · [`terraform`](https://github.com/Banno/asdf-hashicorp)
 
 and all system dependencies required by each of the above tools.
 
