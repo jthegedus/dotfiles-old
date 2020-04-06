@@ -13,7 +13,7 @@ osType="$(uname -s)"
 if [ -d "${HOME}/.asdf" ]; then
     log_success "asdf already exists"
 else
-    log_info "ℹ️  Installing asdf"
+    log_info "Installing asdf"
     git clone https://github.com/asdf-vm/asdf.git "${HOME}/.asdf"
     cd "${HOME}/.asdf" || {
         log_failure_and_exit "Could not find .asdf" 1>&2
@@ -23,13 +23,13 @@ else
         log_failure_and_exit "Could not find ${HOME}" 1>&2
     }
     log_success "Successfully installed asdf"
-    log_info "ℹ️  Shell must be restarted before asdf is available on your PATH. Re-run this script."
+    log_info "Shell must be restarted before asdf is available on your PATH. Re-run this script."
     exit 0
 fi
 
 # nodejs
-log_info "ℹ️  Installing NodeJS"
-log_info "ℹ️  Symlinking default-npm-packages"
+log_info "Installing NodeJS"
+log_info "Symlinking default-npm-packages"
 
 if ! [ -L "${HOME}/.default-npm-packages" ]; then
     ln -fsv ~/projects/dotfiles/config/.default-npm-packages ~/.default-npm-packages
@@ -54,7 +54,7 @@ asdf global nodejs 12.16.1
 log_success "Successfully installed NodeJS"
 
 # Python
-log_info "ℹ️  Installing Python"
+log_info "Installing Python"
 case "${osType}" in
 Linux*)
     sudo apt-get update
@@ -77,14 +77,14 @@ asdf global python 3.8.2
 log_success "Successfully installed Python"
 
 # firebase
-log_info "ℹ️  Installing Firebase"
+log_info "Installing Firebase"
 asdf plugin add firebase
 asdf install firebase 7.15.1 # would be good to get `latest` support in asdf-firebase
 asdf global firebase 7.15.1
 log_success "Successfully installed Firebase"
 
 # gcloud
-log_info "ℹ️  Installing gcloud"
+log_info "Installing gcloud"
 if ! [ -L "${HOME}/.config/gcloud/.default-cloud-sdk-components" ]; then
     ln -fsv ~/projects/dotfiles/config/.default-cloud-sdk-components ~/.config/gcloud/.default-cloud-sdk-components
 fi
@@ -94,14 +94,14 @@ asdf global gcloud 285.0.1
 log_success "Successfully installed gcloud"
 
 # hadolint
-log_info "ℹ️  Installing hadolint"
+log_info "Installing hadolint"
 asdf plugin add hadolint
 asdf install hadolint v1.17.5 # this plugin is doing some weird stuff and could be replaced.
 asdf global hadolint v1.17.5
 log_success "Successfully installed hadolint"
 
 # java
-log_info "ℹ️  Installing Java"
+log_info "Installing Java"
 asdf plugin add java
 asdf install java adopt-openjdk-11.0.6+10
 asdf global java adopt-openjdk-11.0.6+10
@@ -116,21 +116,21 @@ asdf global gradle 6.2.2
 log_success "Successfully installed Java"
 
 # OCaml
-log_info "ℹ️  Installing OCaml"
+log_info "Installing OCaml"
 asdf plugin add ocaml
 asdf install ocaml 4.07.0
 asdf global ocaml 4.07.0
 log_success "Successfully installed OCaml"
 
 # Terraform
-log_info "ℹ️  Installing Terraform"
+log_info "Installing Terraform"
 asdf plugin add terraform
 asdf install terraform 0.12.23
 asdf global terraform 0.12.23
 log_success "Successfully installed Terraform"
 
 # Extras
-log_info "ℹ️  Installing Extras"
+log_info "Installing Extras"
 case "${osType}" in
 Linux*)
     # exfat support
@@ -144,7 +144,7 @@ Linux*)
 Darwin*)
     brew install openssl readline sqlite3 xz zlib
     if [ -f "${HOME}/.Brewfile" ]; then
-        log_info "ℹ️  Installing Homebrew packages/casks and apps from the Mac App Store"
+        log_info "Installing Homebrew packages/casks and apps from the Mac App Store"
         brew bundle install --global
     fi
     ;;

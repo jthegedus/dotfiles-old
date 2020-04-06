@@ -13,7 +13,7 @@ function log_failure() {
 }
 
 function log_info() {
-    printf "%s\\n" "${@}"
+    printf "ℹ️   %s\\n" "${@}"
 }
 
 function log_success() {
