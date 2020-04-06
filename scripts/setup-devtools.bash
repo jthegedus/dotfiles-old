@@ -29,9 +29,9 @@ fi
 
 # nodejs
 log_info "Installing NodeJS"
-log_info "Symlinking default-npm-packages"
 
 if ! [ -L "${HOME}/.default-npm-packages" ]; then
+    log_info "Symlinking default-npm-packages"
     ln -fsv ~/projects/dotfiles/config/.default-npm-packages ~/.default-npm-packages
 fi
 case "${osType}" in
