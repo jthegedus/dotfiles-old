@@ -29,11 +29,6 @@ fi
 
 # nodejs
 log_info "ℹ️  Installing NodeJS"
-log_info "ℹ️  Symlinking default-npm-packages"
-
-if ! [ -L "${HOME}/.default-npm-packages" ]; then
-    ln -fsv ~/projects/dotfiles/config/.default-npm-packages ~/.default-npm-packages
-fi
 case "${osType}" in
 Linux*)
     apt-get install dirmngr gpg -y
@@ -85,9 +80,6 @@ log_success "Successfully installed Firebase"
 
 # gcloud
 log_info "ℹ️  Installing gcloud"
-if ! [ -L "${HOME}/.config/gcloud/.default-cloud-sdk-components" ]; then
-    ln -fsv ~/projects/dotfiles/config/.default-cloud-sdk-components ~/.config/gcloud/.default-cloud-sdk-components
-fi
 asdf plugin add gcloud
 asdf install gcloud 285.0.1 # would be good to get `latest` support in asdf-gcloud
 asdf global gcloud 285.0.1
