@@ -1,25 +1,20 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -eo pipefail
 
 # shellcheck source=./utils.bash
 source "$(dirname "$0")/utils.bash"
 
-# get machine type - https://stackoverflow.com/a/3466183
-osType="$(uname -s)"
-
 # Dependencies
 log_info "ℹ️  Installing dependencies"
-case "${osType}" in
-Linux*)
+if [ -n $LINUX ]; then
     sudo apt install git curl shellcheck -y
     sudo apt install \
         automake autoconf libreadline-dev \
         libncurses-dev libssl-dev libyaml-dev \
         libxslt-dev libffi-dev libtool unixodbc-dev \
         unzip -y
-    ;;
-Darwin*)
+elif [ -n $MACOS ]; then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     xcode-select --install
     brew install curl
@@ -28,27 +23,21 @@ Darwin*)
         coreutils automake autoconf openssl \
         libyaml readline libxslt libtool unixodbc \
         unzip curl
-    ;;
-*)
+else
     log_failure_and_exit "🚨  Script only supports macOS and Ubuntu"
-    ;;
-esac
+fi
 log_success "Successfully installed dependencies"
 
 ############ BEGIN: ZSH
 if [[ ! "$SHELL" == *"zsh"* ]]; then
-    case "${osType}" in
-    Linux*)
+    if [ -n $LINUX ]; then
         log_info "ℹ️  Installing ZSH"
         sudo apt install zsh
-        ;;
-    Darwin*)
+    elif [ -n $MACOS ]; then
         log_info "ℹ️  macOS Catalina comes with ZSH as the default shell."
-        ;;
-    *)
+    else
         log_failure_and_exit "🚨  Script only supports macOS and Ubuntu"
-        ;;
-    esac
+    fi
 else
     log_success "ZSH already installed"
 fi
@@ -86,7 +75,7 @@ fi
 ############ END: ZSH
 
 # starship theme
-if (command -v starship >/dev/null 2>&1); then
+if is_installed starship; then
     log_success "Starship theme already installed"
 else
     log_info "🚀  Installing Starship theme"
