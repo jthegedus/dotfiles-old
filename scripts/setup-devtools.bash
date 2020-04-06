@@ -30,10 +30,6 @@ fi
 # nodejs
 log_info "Installing NodeJS"
 
-if ! [ -L "${HOME}/.default-npm-packages" ]; then
-    log_info "Symlinking default-npm-packages"
-    ln -fsv ~/projects/dotfiles/config/.default-npm-packages ~/.default-npm-packages
-fi
 case "${osType}" in
 Linux*)
     sudo apt-get install dirmngr gpg -y
@@ -82,10 +78,6 @@ log_success "Successfully installed python"
 asdf_plugin_setup "firebase"
 
 # gcloud
-if ! [ -L "${HOME}/.config/gcloud/.default-cloud-sdk-components" ]; then
-    log_info "Symlinking default-cloud-sdk-components"
-    ln -fsv ~/projects/dotfiles/config/.default-cloud-sdk-components ~/.config/gcloud/.default-cloud-sdk-components
-fi
 asdf_plugin_setup "gcloud"
 
 # hadolint
