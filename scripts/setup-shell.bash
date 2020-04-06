@@ -58,14 +58,9 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/
 
 # add fonts for powerline
 log_info "ℹ️  Installing powerline fonts"
-cd ~ && git clone https://github.com/powerline/fonts.git --depth=1
-fonts/install.sh
-cd ~ && rm -rf fonts/
-
-# symlink zshrc
-log_info "ℹ️  Installing .zshrc"
-mv ~/.zshrc ~/.zshrc.orig
-ln -sv ~/projects/dotfiles/config/.zshrc ~/.zshrc
+git clone https://github.com/powerline/fonts.git --depth=1 "$HOME/fonts"
+"$HOME/fonts/install.sh"
+rm -rf "$HOME/fonts/"
 
 # change default shell
 log_info "ℹ️  Setting default shell to ZSH"
@@ -73,15 +68,8 @@ chsh -s "$(command -v zsh)"
 log_success "Successfully installed ZSH"
 ############ END: ZSH
 
-# symlink aliases
-log_info "ℹ️  Symlinking aliases"
-ln -sv ~/projects/dotfiles/config/.aliases ~/.aliases
-
 # starship theme
-
 log_info "🚀  Installing Starship theme"
-mkdir -p ~/.config
-ln -sv ~/projects/dotfiles/config/starship.toml ~/.config/starship.toml
 curl -fsSL https://starship.rs/install.sh | bash
 
 # install z
@@ -102,5 +90,9 @@ else
 fi
 
 # navi - https://github.com/denisidoro/navi
+
+# dynamically symlink all config/dotfiles to home directory
+# shellcheck source=./symlink-dotfiles.bash
+source "$(dirname "$0")/symlink-dotfiles.bash"
 
 log_info "🏁  Fin"
