@@ -47,7 +47,7 @@ Darwin*)
     ;;
 esac
 
-install_asdf_plugin "nodejs"
+asdf plugin add nodejs || true
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 asdf install nodejs 10.19.0
 asdf install nodejs 12.16.1
@@ -72,70 +72,40 @@ Darwin*)
     log_failure_and_exit "Script only supports macOS and Ubuntu"
     ;;
 esac
-install_asdf_plugin "python"
-asdf install python latest
-asdf global python "$(asdf list python)"
-log_success "Successfully installed Python"
+asdf_plugin_setup "python"
 
 # firebase
-log_info "Installing Firebase"
-install_asdf_plugin "firebase"
-asdf install firebase latest
-asdf global firebase "$(asdf list firebase)"
-log_success "Successfully installed Firebase"
+asdf_plugin_setup "firebase"
 
 # gcloud
-log_info "Installing gcloud"
 if ! [ -L "${HOME}/.config/gcloud/.default-cloud-sdk-components" ]; then
+    log_info "Symlinking default-cloud-sdk-components"
     ln -fsv ~/projects/dotfiles/config/.default-cloud-sdk-components ~/.config/gcloud/.default-cloud-sdk-components
 fi
-install_asdf_plugin "gcloud"
-asdf install gcloud latest
-asdf global gcloud "$(asdf list gcloud)"
-log_success "Successfully installed gcloud"
+asdf_plugin_setup "gcloud"
 
 # hadolint
-log_info "Installing hadolint"
-install_asdf_plugin "hadolint"
-asdf install hadolint latest # this plugin is doing some weird stuff and could be replaced.
-asdf global hadolint "$(asdf list hadolint)"
-log_success "Successfully installed hadolint"
+asdf_plugin_setup "hadolint"
 
 # java
 log_info "Installing Java"
-install_asdf_plugin "java"
+asdf plugin add java || true
 asdf install java adopt-openjdk-11.0.6+10
 asdf global java adopt-openjdk-11.0.6+10
-
-install_asdf_plugin "maven"
-asdf install maven 3.6.3
-asdf global maven 3.6.3
-
-install_asdf_plugin "gradle"
-asdf install gradle 6.2.2
-asdf global gradle 6.2.2
 log_success "Successfully installed Java"
 
+asdf_plugin_setup "maven"
+
+asdf_plugin_setup "gradle"
+
 # OCaml
-log_info "Installing OCaml"
-install_asdf_plugin "ocaml"
-asdf install ocaml 4.07.0
-asdf global ocaml 4.07.0
-log_success "Successfully installed OCaml"
+asdf_plugin_setup "ocaml"
 
 # Shellcheck
-log_info "Installing Shellcheck"
-install_asdf_plugin "terraform"
-asdf install terraform latest
-asdf global terraform "$(asdf list shellcheck)"
-log_success "Successfully installed Shellcheck"
+asdf_plugin_setup "terraform"
 
 # Terraform
-log_info "Installing Terraform"
-install_asdf_plugin "terraform"
-asdf install terraform latest
-asdf global terraform "$(asdf list terraform)"
-log_success "Successfully installed Terraform"
+asdf_plugin_setup "terraform"
 
 # Extras
 log_info "Installing Extras"
