@@ -66,7 +66,7 @@ fi
 
 # add fonts for powerline
 installed_fonts=$(fc-list : file family | grep -i powerline)
-if [ ! -z "$installed_fonts" ]; then
+if [ -n "$installed_fonts" ]; then
     log_success "Powerline fonts already installed"
 else
     log_info "ℹ️  Installing powerline fonts"
