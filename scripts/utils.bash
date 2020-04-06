@@ -26,7 +26,7 @@ function log_warning() {
 # END Logging
 
 function asdf_plugin_setup() {
-    log_info "Installing ${1}"
+    log_info "Installing ${1} via asdf"
     asdf plugin add "${1}" || true
     # TODO: fix so a more precise check of output is performed
     #
@@ -38,5 +38,5 @@ function asdf_plugin_setup() {
     # fi
     asdf install "${1}" latest
     asdf global "${1}" "$(asdf list "${1}")"
-    log_success "Successfully installed ${1}"
+    log_success "Successfully installed ${1} via asdf"
 }
