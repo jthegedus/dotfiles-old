@@ -11,7 +11,7 @@ osType="$(uname -s)"
 # configure bash shell options
 shopt -s globstar # '**' can be used to recursively search directories
 shopt -s nullglob # do nothing if no files matched
-shopt -s dotglob # match hidden files
+shopt -s dotglob  # match hidden files
 
 # get absolute path of config directory
 config_root="$(dirname "$(dirname "$0")")/config"
@@ -29,11 +29,11 @@ for file in "$config_root"/**/*; do
     if [[ ! -d $file ]]; then
         log_info "ℹ️  Symlinking ~/$file_relative_path"
         if [[ -L $home_path ]]; then
-            rm -f "$home_path"; # remove existing symlink
+            rm -f "$home_path" # remove existing symlink
         elif [[ -f $home_path ]]; then
             backup_file="$home_path.$(date +'%Y%m%d').bak"
             mv "$home_path" "$backup_file" # backup existing file
-            rm -f "$home_path"; # remove existing file
+            rm -f "$home_path"             # remove existing file
         else
             mkdir -p "$HOME/$(dirname "$file_relative_path")" # ensure directory hierarchy exists
         fi
