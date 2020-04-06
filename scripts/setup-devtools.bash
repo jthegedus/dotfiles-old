@@ -46,7 +46,8 @@ Darwin*)
     log_failure_and_exit "Script only supports macOS and Ubuntu"
     ;;
 esac
-asdf plugin add nodejs
+
+install_asdf_plugin "nodejs"
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 asdf install nodejs 10.19.0
 asdf install nodejs 12.16.1
@@ -71,16 +72,16 @@ Darwin*)
     log_failure_and_exit "Script only supports macOS and Ubuntu"
     ;;
 esac
-asdf plugin add python
-asdf install python 3.8.2
-asdf global python 3.8.2
+install_asdf_plugin "python"
+asdf install python latest
+asdf global python "$(asdf list python)"
 log_success "Successfully installed Python"
 
 # firebase
 log_info "Installing Firebase"
-asdf plugin add firebase
-asdf install firebase 7.15.1 # would be good to get `latest` support in asdf-firebase
-asdf global firebase 7.15.1
+install_asdf_plugin "firebase"
+asdf install firebase latest
+asdf global firebase "$(asdf list firebase)"
 log_success "Successfully installed Firebase"
 
 # gcloud
@@ -88,45 +89,52 @@ log_info "Installing gcloud"
 if ! [ -L "${HOME}/.config/gcloud/.default-cloud-sdk-components" ]; then
     ln -fsv ~/projects/dotfiles/config/.default-cloud-sdk-components ~/.config/gcloud/.default-cloud-sdk-components
 fi
-asdf plugin add gcloud
-asdf install gcloud 285.0.1 # would be good to get `latest` support in asdf-gcloud
-asdf global gcloud 285.0.1
+install_asdf_plugin "gcloud"
+asdf install gcloud latest
+asdf global gcloud "$(asdf list gcloud)"
 log_success "Successfully installed gcloud"
 
 # hadolint
 log_info "Installing hadolint"
-asdf plugin add hadolint
-asdf install hadolint v1.17.5 # this plugin is doing some weird stuff and could be replaced.
-asdf global hadolint v1.17.5
+install_asdf_plugin "hadolint"
+asdf install hadolint latest # this plugin is doing some weird stuff and could be replaced.
+asdf global hadolint "$(asdf list hadolint)"
 log_success "Successfully installed hadolint"
 
 # java
 log_info "Installing Java"
-asdf plugin add java
+install_asdf_plugin "java"
 asdf install java adopt-openjdk-11.0.6+10
 asdf global java adopt-openjdk-11.0.6+10
 
-asdf plugin add maven
+install_asdf_plugin "maven"
 asdf install maven 3.6.3
 asdf global maven 3.6.3
 
-asdf plugin add gradle
+install_asdf_plugin "gradle"
 asdf install gradle 6.2.2
 asdf global gradle 6.2.2
 log_success "Successfully installed Java"
 
 # OCaml
 log_info "Installing OCaml"
-asdf plugin add ocaml
+install_asdf_plugin "ocaml"
 asdf install ocaml 4.07.0
 asdf global ocaml 4.07.0
 log_success "Successfully installed OCaml"
 
+# Shellcheck
+log_info "Installing Shellcheck"
+install_asdf_plugin "terraform"
+asdf install terraform latest
+asdf global terraform "$(asdf list shellcheck)"
+log_success "Successfully installed Shellcheck"
+
 # Terraform
 log_info "Installing Terraform"
-asdf plugin add terraform
-asdf install terraform 0.12.23
-asdf global terraform 0.12.23
+install_asdf_plugin "terraform"
+asdf install terraform latest
+asdf global terraform "$(asdf list terraform)"
 log_success "Successfully installed Terraform"
 
 # Extras

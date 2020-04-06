@@ -24,3 +24,16 @@ function log_warning() {
     printf "⚠️  %s\\n" "${@}"
 }
 # END Logging
+
+function install_asdf_plugin() {
+    asdf plugin add "${1}" || true
+
+    # TODO: fix so a more precise check of output is performed
+    #
+    # status_code=$(asdf plugin add "${1}")
+    # if [ "$status_code" -eq 0 ] || [ "$status_code" -eq 2 ]; then
+    #     log_success "asdf plugin ${1} is installed"
+    # else
+    #     log_failure_and_exit "asdf plugin add ${1} encountered an error during operation. Run this command manually to debug the issue."
+    # fi
+}
