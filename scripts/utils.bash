@@ -37,6 +37,6 @@ function asdf_plugin_setup() {
     #     log_failure_and_exit "asdf plugin add ${1} encountered an error during operation. Run this command manually to debug the issue."
     # fi
     asdf install "${1}" latest
-    asdf global "${1}" "$(asdf list "${1}")"
+    asdf global "${1}" "$(asdf list "${1}" | xargs echo)"
     log_success "Successfully installed ${1} via asdf"
 }
