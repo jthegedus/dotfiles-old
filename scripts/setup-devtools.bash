@@ -72,7 +72,11 @@ Darwin*)
     log_failure_and_exit "Script only supports macOS and Ubuntu"
     ;;
 esac
-asdf_plugin_setup "python"
+log_info "Installing python"
+asdf plugin add python || true
+asdf install python 3.8.2
+asdf global python 3.8.2
+log_success "Successfully installed python"
 
 # firebase
 asdf_plugin_setup "firebase"
