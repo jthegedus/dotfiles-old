@@ -12,7 +12,7 @@ shopt -s dotglob # match hidden files
 
 # get absolute path of config directory
 config_root="$(dirname "$(dirname "$0")")/config"
-if [[ -n $MACOS ]]; then
+if [[ -n "$MACOS" ]]; then
     config_root="$(greadlink -f "$config_root")" # requires coreutils
 else
     config_root="$(readlink -f "$config_root")"

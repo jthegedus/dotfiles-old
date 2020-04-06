@@ -7,14 +7,14 @@ source "$(dirname "$0")/utils.bash"
 
 # Dependencies
 log_info "ℹ️  Installing dependencies"
-if [ -n $LINUX ]; then
+if [ -n "$LINUX" ]; then
     sudo apt install git curl shellcheck -y
     sudo apt install \
         automake autoconf libreadline-dev \
         libncurses-dev libssl-dev libyaml-dev \
         libxslt-dev libffi-dev libtool unixodbc-dev \
         unzip -y
-elif [ -n $MACOS ]; then
+elif [ -n "$MACOS" ]; then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     xcode-select --install
     brew install curl
@@ -30,10 +30,10 @@ log_success "Successfully installed dependencies"
 
 ############ BEGIN: ZSH
 if [[ ! "$SHELL" == *"zsh"* ]]; then
-    if [ -n $LINUX ]; then
+    if [ -n "$LINUX" ]; then
         log_info "ℹ️  Installing ZSH"
         sudo apt install zsh
-    elif [ -n $MACOS ]; then
+    elif [ -n "$MACOS" ]; then
         log_info "ℹ️  macOS Catalina comes with ZSH as the default shell."
     else
         log_failure_and_exit "🚨  Script only supports macOS and Ubuntu"
