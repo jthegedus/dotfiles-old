@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -eo pipefail
 
 # shellcheck source=./utils.bash
 source "$(dirname "$0")/utils.bash"
-
-# get machine type - https://stackoverflow.com/a/3466183
-osType="$(uname -s)"
 
 # configure bash shell options
 shopt -s globstar # '**' can be used to recursively search directories
@@ -15,7 +12,7 @@ shopt -s dotglob # match hidden files
 
 # get absolute path of config directory
 config_root="$(dirname "$(dirname "$0")")/config"
-if [[ $osType == "Darwin"* ]]; then
+if [[ -n "$MACOS" ]]; then
     config_root="$(greadlink -f "$config_root")" # requires coreutils
 else
     config_root="$(readlink -f "$config_root")"
