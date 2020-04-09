@@ -206,7 +206,7 @@ On login the OS may hang. Below are the instructions I followed to remedy the is
 Runs this installation script to install my Ubuntu 20.04 application setup:
 
 ```shell
-sh -c "$(curl -fsSL https://raw.github.com/jthegedus/dotfiles/master/scripts/setup-ubuntu.bash)"
+bash -c "$(curl -fsSL https://raw.github.com/jthegedus/dotfiles/master/scripts/setup-ubuntu.bash)"
 # wget alternative?
 ```
 
