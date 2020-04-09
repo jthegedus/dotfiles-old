@@ -5,8 +5,6 @@ set -eo pipefail
 # shellcheck source=./utils.bash
 source "$(dirname "$0")/utils.bash"
 
-
-############ BEGIN: Tools
 # asdf
 if [ -d "${HOME}/.asdf" ]; then
     log_success "asdf already exists"
@@ -114,6 +112,5 @@ else
     log_failure_and_exit "Script only supports macOS and Ubuntu"
 fi
 log_success "Successfully installed Extras"
-############ END: Tools
 
 log_info "Fin 🏁"
