@@ -172,8 +172,9 @@ and all system dependencies required by each of the above tools.
 Runs this installation script to install my Ubuntu 20.04 application setup:
 
 ```shell
+wget -O - https://raw.github.com/jthegedus/dotfiles/master/scripts/setup-ubuntu.bash | bash
+# or with curl if it is already on your system
 bash -c "$(curl -fsSL https://raw.github.com/jthegedus/dotfiles/master/scripts/setup-ubuntu.bash)"
-# wget alternative?
 ```
 
 #### Comes with the following apps
