@@ -20,6 +20,9 @@ if ! grep -q "${gitkraken_icon_path}" "${gitkraken_snap_path}"; then
     printf "\n%s" "${gitkraken_icon_path}" >>"${gitkraken_snap_path}"
 fi
 
+# Barrier (cross-platform keyboard-mouse network sharing)
+sudo snap install barrier
+
 # Chat apps
 sudo snap install discord
 sudo snap install signal-desktop
