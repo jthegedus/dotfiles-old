@@ -13,8 +13,9 @@ Cross-platform dotfiles & developer environment for Ubuntu 18.04+, macOS Catalin
 ## Contents
 
 - [Preamble](#preamble)
-- [Windows 10 with WSL](#windows-10-with-wsl)
-- [Ubuntu 18.04+](#ubuntu-1804+)
+- [Windows 10 with WSL2](#windows-10-with-wsl2)
+- [Ubuntu 20.04 or macOS Catalina](#ubuntu-2004-or-macos-catalina)
+- [Ubuntu 20.04 Applications](#ubuntu-2004-applications)
 - [VSCode](#vscode)
 - [Fonts](#fonts)
 - [Ubuntu on various hardware](#ubuntu-on-various-hardware)
@@ -24,7 +25,7 @@ Cross-platform dotfiles & developer environment for Ubuntu 18.04+, macOS Catalin
 
 ## Preamble
 
-This "cross-platform" setup of mine is really just a Ubuntu 18.04+ ZSH environment. macOS is supported by installing dependencies with `brew` where required. Windows 10 is supported with Ubuntu 18.04+ via WSL 2 👌
+This "cross-platform" setup of mine is really just a Ubuntu 20.04+ ZSH environment. macOS is supported by installing dependencies with `brew` where required. Windows 10 is supported with Ubuntu 18.04+ via WSL 2 👌
 
 ## Windows 10 with WSL2
 
@@ -41,7 +42,7 @@ This "cross-platform" setup of mine is really just a Ubuntu 18.04+ ZSH environme
 6. check `Windows Subsystem for Linux` & then press `ok`
 7. reboot
 
-### Ubuntu 18.04 on Windows
+### Ubuntu 20.04 on Windows
 
 Install the [Ubuntu 18.04 Shell](https://www.microsoft.com/store/productId/9N9TNGVNDL3Q).
 
@@ -118,7 +119,7 @@ Now that we have WSL 2 working and a Ubuntu 18.04 Bash shell we can essentially 
 
 </details>
 
-## Ubuntu 18.04+ or macOS Catalina
+## Ubuntu 20.04 or macOS Catalina
 
 Items installed in the following scripts include:
 
@@ -166,6 +167,44 @@ and all system dependencies required by each of the above tools.
 
 - open `scripts/setup-shell.bash` and `scripts/setup-devtools.bash` and copy/paste the commands you wish to use from top to bottom. It's fairly straight forward. If there is a tool you're unsure about either see my links at the top of the README or Google them 😉
 
+## Ubuntu 20.04 Applications
+
+Runs this installation script to install my Ubuntu 20.04 application setup:
+
+```shell
+bash -c "$(curl -fsSL https://raw.github.com/jthegedus/dotfiles/master/scripts/setup-ubuntu.bash)"
+# wget alternative?
+```
+
+#### Comes with the following apps
+
+From aptitude:
+
+- `git`, `curl`, `tar`, `apt-transport-https`, `gnome-tweaks`
+
+From the web:
+
+- [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/): All the latest developer tools in beta, plus experimental features like the Multi-line Console Editor and WebSocket Inspector.
+
+From the Ubuntu Store (snaps):
+
+- [VSCode](https://code.visualstudio.com/): Mircosoft's free, open-source code editor.
+- [GitKraken](https://www.gitkraken.com/git-client): Cross-platform Git GUI.
+- [Slack](https://slack.com/): Team communication app.
+- [Discord](https://discordapp.com/): Community communication app.
+- [Signal](https://signal.org/): Privacy focused messaging app.
+
+#### Other apps worth considering
+
+- [Solaar](https://pwr.github.io/Solaar/): Logitech Wireless device management. `sudo apt install solaar`.
+- [Barrier](https://snapcraft.io/barrier): Cross-platform mouse/keyboard sharing. [Synergy](https://symless.com/synergy): The commercial reimplementation.
+- Gnome Extensions (requires `sudo apt-get install chrome-gnome-shell -y`):
+  - [Sound Input & Output Device Chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/): Select audio IO from media dropdown.
+  - [ShellTile](https://extensions.gnome.org/extension/657/shelltile/): A tiling window extension for GNOME Shell.
+  - [Caffeine](https://extensions.gnome.org/extension/517/caffeine/): Disable the screensaver and auto suspend.
+  - [Frippery Move Clock](https://extensions.gnome.org/extension/2/move-clock/): Move clock to left of status menu button.
+  - [Panel OSD](https://extensions.gnome.org/extension/708/panel-osd/): Configuring where on the (main) screen notifications will appear, instead of just above the message tray.
+
 ## VSCode
 
 Add VSCode to macOS path: https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line
@@ -200,43 +239,6 @@ Ubuntu installation will hang on a Lenovo ThinkPad E485/E585. Below are the inst
 On login the OS may hang. Below are the instructions I followed to remedy the issues:
 
 - [18.04 / 18.10](https://medium.com/@jthegedus/ubuntu-18-04-lts-on-a-dell-xps-db4dcee9a2f9)
-
-### Ubuntu 18.04+ apps
-
-- [Solaar](https://pwr.github.io/Solaar/): Logitech Wireless device management. `sudo apt install solaar`
-- [Synergy](https://symless.com/synergy): Cross-platform mouse/keyboard sharing.
-- Gnome Extensions (requires `sudo apt-get install chrome-gnome-shell -y`):
-  - [Sound Input & Output Device Chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/): Select audio IO from media dropdown
-  - [ShellTile](https://extensions.gnome.org/extension/657/shelltile/): A tiling window extension for GNOME Shell.
-
-<details>
-<summary>Firefox Developer Edition</summary>
-
-- [download FF DE](https://www.mozilla.org/en-US/firefox/developer/)
-- extract `cd ~/Downloads && tar -xvf firefox-*.tar.bz2`
-- `mv ~/Downloads/firefox-* /opt/firefox_dev`
-- `ln -s /opt/firefox_dev/firefox /usr/local/bin/firefox_dev`
-- `sudo nano /usr/share/applications/firefox-developer.desktop`
-- create this file `~/.local/share/applications/firefox_dev.desktop`
-- desktop entry
-- `chmod +x /usr/share/applications/firefox-developer.desktop`
-
-```
-[Desktop Entry]
-Name=Firefox Developer
-GenericName=Firefox Developer Edition
-Exec=/usr/local/bin/firefox_dev/firefox --class=FirefoxDev
-StartupWMClass=FirefoxDev
-Terminal=false
-Icon=/opt/firefox_dev/firefox/browser/chrome/icons/default/default128.png
-Type=Application
-Categories=Application;Network;X-Developer;
-Comment=Firefox Developer Edition Web Browser
-```
-
-- mark as a trusted executable `chmod +x ~/.local/share/applications/firefox_dev.desktopchmod +x ~/.local/share/applications/firefox_dev.desktop`
-
-</details>
 
 ## Resources worth Reading
 

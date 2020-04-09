@@ -27,7 +27,6 @@ function log_success() {
 function log_warning() {
     printf "⚠️  %s\\n" "${@}"
 }
-# END Logging
 
 function asdf_plugin_setup() {
     log_info "Installing ${1} via asdf"
