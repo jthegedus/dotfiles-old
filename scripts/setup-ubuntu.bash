@@ -2,9 +2,6 @@
 
 set -euo pipefail
 
-# shellcheck source=./utils.bash
-source "$(dirname "$0")/utils.bash"
-
 # install from apt
 sudo apt install git curl tar apt-transport-https gnome-tweaks -y
 
@@ -62,5 +59,6 @@ Exec=/home/egdoc/.local/bin/firefox-dev --private-window %u
 EOL
     chmod +x "${firefox_developer_desktop_entry_path}"
 else
-    log_info "Firefox Developer Edition is already installed."
+    # cannot replace with utils.bash log_info as it will break remote file pull and execute.
+    printf "ℹ️  Firefox Developer Edition is already installed.\\n"
 fi
