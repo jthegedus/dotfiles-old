@@ -17,7 +17,7 @@ function log_failure() {
 }
 
 function log_info() {
-    printf "%s\\n" "${@}"
+    printf "ℹ️  %s\\n" "${@}"
 }
 
 function log_success() {
@@ -42,6 +42,6 @@ function backup_file() {
     elif [[ -f $file ]]; then
         backup_file="$file.$(date +'%Y%m%d').bak"
         mv -fv --backup=t "$file" "$backup_file" # backup existing file
-        rm -fv "$file"; # remove existing file
+        rm -fv "$file"                           # remove existing file
     fi
 }
