@@ -28,22 +28,6 @@ function log_warning() {
     printf "⚠️  %s\\n" "${@}"
 }
 
-function asdf_plugin_setup() {
-    log_info "Installing ${1} via asdf"
-    asdf plugin add "${1}" || true
-    # TODO: fix so a more precise check of output is performed
-    #
-    # status_code=$(asdf plugin add "${1}")
-    # if [ "$status_code" -eq 0 ] || [ "$status_code" -eq 2 ]; then
-    #     log_success "asdf plugin ${1} is installed"
-    # else
-    #     log_failure_and_exit "asdf plugin add ${1} encountered an error during operation. Run this command manually to debug the issue."
-    # fi
-    asdf install "${1}" latest
-    asdf global "${1}" "$(asdf list "${1}" | xargs echo)"
-    log_success "Successfully installed ${1} via asdf"
-}
-
 ### Utility functions
 # checks if command is available
 function is_installed() {

@@ -5,6 +5,61 @@ set -eo pipefail
 # shellcheck source=./utils.bash
 source "$(dirname "$0")/utils.bash"
 
+function asdf_plugin_setup() {
+    local plugin_name="${1}"
+    local plugin_version="${2}"
+
+    log_info "Installing ${plugin_name} via asdf"
+
+    # if nodejs
+    # install nodejs deps
+    if [[ "${plugin_version}" == "nodejs" ]]; then
+        if [ -n "$LINUX" ]; then
+            apt-get install dirmngr gpg -y
+        elif [ -n "$MACOS" ]; then
+            brew install coreutils
+            brew install gpg
+        else
+            log_failure_and_exit "Script only supports macOS and Ubuntu"
+        fi
+    fi
+
+    # if python
+    # install python deps
+    if [[ "${plugin_version}" == "python" ]]; then
+        if [ -n "$LINUX" ]; then
+            sudo apt-get update
+            sudo apt-get install --no-install-recommends \
+                make build-essential libssl-dev zlib1g-dev libbz2-dev \
+                libreadline-dev libsqlite3-dev wget curl llvm \
+                libncurses5-dev xz-utils tk-dev libxml2-dev \
+                libxmlsec1-dev libffi-dev liblzma-dev -y
+        elif [ -n "$MACOS" ]; then
+            brew install openssl readline sqlite3 xz zlib
+        else
+            log_failure_and_exit "Script only supports macOS and Ubuntu"
+        fi
+    fi
+
+    asdf plugin add "${plugin_name}" || true
+    # TODO: fix so a more precise check of output is performed
+    #
+    # status_code=$(asdf plugin add "${plugin_name}")
+    # if [ "$status_code" -eq 0 ] || [ "$status_code" -eq 2 ]; then
+    #     log_success "asdf plugin ${plugin_name} is installed"
+    # else
+    #     log_failure_and_exit "asdf plugin add ${plugin_name} encountered an error during operation. Run this command manually to debug the issue."
+    # fi
+
+    if [[ "${plugin_version}" == "nodejs" ]]; then
+        bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+    fi
+
+    asdf install "${plugin_name}" "${plugin_version}"
+    asdf global "${plugin_name}" "$(asdf list "${plugin_name}" | xargs echo)"
+    log_success "Successfully installed ${plugin_name} via asdf"
+}
+
 # asdf
 if [ -d "${HOME}/.asdf" ]; then
     log_success "asdf already exists"
@@ -23,74 +78,14 @@ else
     exit 0
 fi
 
-# nodejs
-log_info "Installing NodeJS"
-if [ -n "$LINUX" ]; then
-    apt-get install dirmngr gpg -y
-elif [ -n "$MACOS" ]; then
-    brew install coreutils
-    brew install gpg
-else
-    log_failure_and_exit "Script only supports macOS and Ubuntu"
+# asdf-plugins if config provided
+initial_asdf_plugin_list="$(dirname "$0")/initial-asdf-plugins.txt"
+if [ -f "$initial_asdf_plugin_list" ]; then
+    while IFS="" read -r p || [ -n "$p" ]; do
+        IFS=" " read -r plugin_name plugin_version <<<"$p"
+        asdf_plugin_setup "$plugin_name" "$plugin_version"
+    done <"$initial_asdf_plugin_list"
 fi
-asdf plugin add nodejs || true
-bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
-asdf install nodejs 10.19.0
-asdf install nodejs 12.16.1
-asdf global nodejs 12.16.1
-log_success "Successfully installed NodeJS"
-
-# Python
-log_info "Installing Python"
-if [ -n "$LINUX" ]; then
-    sudo apt-get update
-    sudo apt-get install --no-install-recommends \
-        make build-essential libssl-dev zlib1g-dev libbz2-dev \
-        libreadline-dev libsqlite3-dev wget curl llvm \
-        libncurses5-dev xz-utils tk-dev libxml2-dev \
-        libxmlsec1-dev libffi-dev liblzma-dev -y
-elif [ -n "$MACOS" ]; then
-    brew install openssl readline sqlite3 xz zlib
-else
-    log_failure_and_exit "Script only supports macOS and Ubuntu"
-fi
-asdf plugin add python || true
-asdf install python 3.8.2
-asdf global python 3.8.2
-log_success "Successfully installed python"
-
-# firebase
-asdf_plugin_setup "firebase"
-
-# gcloud
-asdf_plugin_setup "gcloud"
-asdf plugin add gcloud
-asdf install gcloud 285.0.1 # would be good to get `latest` support in asdf-gcloud
-asdf global gcloud 285.0.1
-log_success "Successfully installed gcloud"
-
-# hadolint
-asdf_plugin_setup "hadolint"
-
-# java
-log_info "Installing Java"
-asdf plugin add java || true
-asdf install java adopt-openjdk-11.0.6+10
-asdf global java adopt-openjdk-11.0.6+10
-log_success "Successfully installed Java"
-
-asdf_plugin_setup "maven"
-
-asdf_plugin_setup "gradle"
-
-# OCaml
-asdf_plugin_setup "ocaml"
-
-# Shellcheck
-asdf_plugin_setup "terraform"
-
-# Terraform
-asdf_plugin_setup "terraform"
 
 # Extras
 log_info "ℹ️  Installing Extras"
