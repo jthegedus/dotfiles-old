@@ -1,5 +1,4 @@
 firebase latest
-gcloud latest
 gradle latest
 hadolint latest
 java adopt-openjdk-11.0.6+10
@@ -9,3 +8,4 @@ ocaml latest
 python latest
 shellcheck latest
 terraform latest
+gcloud latest
