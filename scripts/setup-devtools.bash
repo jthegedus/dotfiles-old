@@ -80,14 +80,15 @@ fi
 # asdf-plugins if config provided
 initial_asdf_plugin_list="$(dirname "$0")/initial-asdf-plugins.txt"
 if [ -f "$initial_asdf_plugin_list" ]; then
-    while IFS="" read -r p || [ -n "$p" ]; do
-        IFS=" " read -r plugin_name plugin_version <<<"$p"
+    while read -r p || [ -n "$p" ]; do
+        plugin_name="$(cut -d ' ' -f1 <<<"$p")"
+        plugin_version="$(cut -d ' ' -f2 <<<"$p")"
         asdf_plugin_setup "$plugin_name" "$plugin_version"
     done <"$initial_asdf_plugin_list"
 fi
 
 # Extras
-log_info "ℹ️  Installing Extras"
+log_info "Installing Extras"
 if [ -n "$LINUX" ]; then
     # exfat support
     sudo apt-get install exfat-fuse exfat-utils -y
