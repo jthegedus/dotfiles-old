@@ -10,15 +10,15 @@ shopt -s globstar # '**' can be used to recursively search directories
 shopt -s nullglob # do nothing if no files matched
 shopt -s dotglob  # match hidden files
 
-# get absolute path of config directory
-config_root="$(dirname "$(dirname "$0")")/config"
+# get absolute path of dotfiles directory
+config_root="$(dirname "$(dirname "$0")")/dotfiles"
 if [[ -n "$MACOS" ]]; then
     config_root="$(greadlink -f "$config_root")" # requires coreutils
 else
     config_root="$(readlink -f "$config_root")"
 fi
 
-# loop through every file in config/ and create symlinks in home directory
+# loop through every file in dotfiles/ and create symlinks in home directory
 for file in "$config_root"/**/*; do
     file_absolute_path="$file"
     file_relative_path="${file_absolute_path#$config_root/}"
