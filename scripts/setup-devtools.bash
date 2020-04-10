@@ -50,13 +50,12 @@ function asdf_plugin_setup() {
     # else
     #     log_failure_and_exit "asdf plugin add ${plugin_name} encountered an error during operation. Run this command manually to debug the issue."
     # fi
-
-    if [[ "${plugin_version}" == "nodejs" ]]; then
+    if [[ "${plugin_name}" == "nodejs" ]]; then
         bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
     fi
 
     asdf install "${plugin_name}" "${plugin_version}"
-    asdf global "${plugin_name}" "$(asdf list "${plugin_name}" | xargs echo)"
+    asdf global "${plugin_name}" "$(asdf list "${plugin_name}" | tail -n 1 | xargs echo)"
     log_success "Successfully installed ${plugin_name} via asdf"
 }
 
