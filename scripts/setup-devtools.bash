@@ -78,7 +78,7 @@ else
 fi
 
 # asdf-plugins if config provided
-initial_asdf_plugin_list="$(dirname "$0")/initial-asdf-plugins.txt"
+initial_asdf_plugin_list="$(dirname "$(dirname "$0")")/config/initial-asdf-plugins.txt"
 if [ -f "$initial_asdf_plugin_list" ]; then
     while read -r p || [ -n "$p" ]; do
         plugin_name="$(cut -d ' ' -f1 <<<"$p")"
