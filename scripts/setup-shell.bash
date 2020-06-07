@@ -8,7 +8,8 @@ source "$(dirname "$0")/utils.bash"
 # Dependencies
 log_info "Installing dependencies"
 if [ -n "$LINUX" ]; then
-	sudo apt install git curl shellcheck -y
+	sudo apt update -y
+	sudo apt install git curl shellcheck fontconfig -y
 	sudo apt install \
 		automake autoconf libreadline-dev \
 		libncurses-dev libssl-dev libyaml-dev \
