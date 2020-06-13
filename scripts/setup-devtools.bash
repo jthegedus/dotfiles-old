@@ -13,7 +13,7 @@ function asdf_plugin_setup() {
 
 	# if nodejs
 	# install nodejs deps
-	if [[ "${plugin_version}" == "nodejs" ]]; then
+	if [[ "${plugin_name}" == "nodejs" ]]; then
 		if [ -n "$LINUX" ]; then
 			apt-get install dirmngr gpg -y
 		elif [ -n "$MACOS" ]; then
@@ -26,7 +26,7 @@ function asdf_plugin_setup() {
 
 	# if python
 	# install python deps
-	if [[ "${plugin_version}" == "python" ]]; then
+	if [[ "${plugin_name}" == "python" ]]; then
 		if [ -n "$LINUX" ]; then
 			sudo apt-get update
 			sudo apt-get install --no-install-recommends \
