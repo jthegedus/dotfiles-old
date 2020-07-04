@@ -177,6 +177,7 @@ printf "🚀  Load Starship shell prompt\\n"
 eval "$(starship init zsh)"
 
 printf "%s\\n" "Load Navi"
+# shellcheck disable=SC1090
 source <(navi widget zsh)
 
 # printf "\\n🏞  Environment Variables: \\n\\n"
