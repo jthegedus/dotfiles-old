@@ -13,16 +13,14 @@ if [ -n "$LINUX" ]; then
 	sudo apt install \
 		automake autoconf libreadline-dev \
 		libncurses-dev libssl-dev libyaml-dev \
-		libxslt-dev libffi-dev libtool unixodbc-dev \
-		unzip -y
+		libxslt-dev libffi-dev libtool unixodbc-dev -y
 elif [ -n "$MACOS" ]; then
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	xcode-select --install
 	brew install curl unzip
 	brew install \
 		coreutils automake autoconf openssl \
-		libyaml readline libxslt libtool unixodbc \
-		unzip curl
+		libyaml readline libxslt libtool unixodbc
 else
 	log_failure_and_exit "🚨  Script only supports macOS and Ubuntu"
 fi
@@ -102,7 +100,11 @@ else
 fi
 
 # navi - https://github.com/denisidoro/navi
-
+if [ -n "$LINUX" ]; then
+	echo "TODO: install navi on Linux"
+elif [ -n "$MACOS" ]; then
+	brew install navi
+fi
 # dynamically symlink all config/dotfiles to home directory
 # shellcheck source=./symlink-dotfiles.bash
 source "$(dirname "$0")/symlink-dotfiles.bash"

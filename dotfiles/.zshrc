@@ -176,5 +176,8 @@ source_if_exists "$HOME/.aliases"
 printf "🚀  Load Starship shell prompt\\n"
 eval "$(starship init zsh)"
 
+printf "%s\\n" "Load Navi"
+source <(navi widget zsh)
+
 # printf "\\n🏞  Environment Variables: \\n\\n"
 # printenv
