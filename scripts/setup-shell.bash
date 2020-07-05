@@ -98,3 +98,11 @@ brew install \
 source "$(dirname "$0")/symlink-dotfiles.bash"
 
 log_info "🏁  Fin"
+
+# setup git config
+log_warning "Do not forget to run:"
+log_info "git config --global user.name <your name>"
+log_info "git config --global user.email <your@email.com>"
+log_info "git config --global core.editor <editor of choice>"
+log_info "git config credential.helper store"
+log_info "git config --global credential.helper 'cache --timeout 7200'"
