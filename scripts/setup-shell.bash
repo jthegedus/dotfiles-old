@@ -5,6 +5,20 @@ set -eo pipefail
 # shellcheck source=./utils.bash
 source "$(dirname "$0")/utils.bash"
 
+# Homebrew
+if is_installed "brew"; then
+	log_success "Homebrew already installed"
+else
+	if [ -n "$LINUX" ]; then
+		sudo apt-get install build-essential curl file git -y
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+	elif [ -n "$MACOS" ]; then
+		xcode-select --install
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+	fi
+	log_success "Brew installed successfully"
+fi
+
 # Dependencies
 log_info "Installing dependencies"
 if [ -n "$LINUX" ]; then
@@ -15,8 +29,6 @@ if [ -n "$LINUX" ]; then
 		libncurses-dev libssl-dev libyaml-dev \
 		libxslt-dev libffi-dev libtool unixodbc-dev -y
 elif [ -n "$MACOS" ]; then
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	xcode-select --install
 	brew install curl unzip
 	brew install \
 		coreutils automake autoconf openssl \
@@ -100,11 +112,13 @@ else
 fi
 
 # navi - https://github.com/denisidoro/navi
-if [ -n "$LINUX" ]; then
-	echo "TODO: install navi on Linux"
-elif [ -n "$MACOS" ]; then
+if is_installed "navi"; then
+	log_success "Navi already installed"
+else
 	brew install navi
+	log_success "Navi installed successfully"
 fi
+
 # dynamically symlink all config/dotfiles to home directory
 # shellcheck source=./symlink-dotfiles.bash
 source "$(dirname "$0")/symlink-dotfiles.bash"
