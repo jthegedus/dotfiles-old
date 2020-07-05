@@ -83,41 +83,15 @@ else
 	log_info "Setting default shell to ZSH"
 	chsh -s "$(command -v zsh)"
 fi
-
 ############ END: ZSH
 
-# starship theme
-if is_installed starship; then
-	log_success "Starship theme already installed"
-else
-	log_info "Installing Starship theme 🚀"
-	curl -fsSL https://starship.rs/install.sh | bash
-fi
-
-# install z
-if [ -f "${HOME}/z.sh" ]; then
-	log_success "z.sh already installed"
-else
-	log_info "Installing z"
-	wget -P "${HOME}" https://raw.githubusercontent.com/rupa/z/master/z.sh
-fi
-
-# install fzf
-if [ -d "${HOME}/.fzf" ]; then
-	log_success "fzf already installed"
-else
-	log_info "Installing fzf"
-	git clone --depth 1 https://github.com/junegunn/fzf.git "${HOME}/.fzf"
-	~/.fzf/install --key-bindings --completion --no-update-rc --no-bash --no-zsh
-fi
-
-# navi - https://github.com/denisidoro/navi
-if is_installed "navi"; then
-	log_success "Navi already installed"
-else
-	brew install navi
-	log_success "Navi installed successfully"
-fi
+# navi		- https://github.com/denisidoro/navi
+# z			- https://github.com/rupa/z
+# starship	- https://starship.rs/
+brew install \
+	navi \
+	z \
+	starship
 
 # dynamically symlink all config/dotfiles to home directory
 # shellcheck source=./symlink-dotfiles.bash

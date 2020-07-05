@@ -78,7 +78,6 @@ fpath=($HOME/.asdf/completions $fpath)
 plugins=(
 	asdf
 	docker
-	fzf
 	# gcloud
 	git
 	golang
@@ -163,7 +162,7 @@ source_if_exists "$HOME/z.sh"
 
 ### asdf plugins
 #### JAVA_HOME
-source_if_exists "$HOME/.asdf/plugins/java/set-java-home.sh"
+# source_if_exists "$HOME/.asdf/plugins/java/set-java-home.sh"
 
 ### aliases
 source_if_exists "$HOME/.aliases"
