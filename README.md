@@ -34,7 +34,7 @@ Cross-platform dotfiles & developer environment for Ubuntu 20.04+, macOS Catalin
 
 ## Preamble
 
-This "cross-platform" setup of mine is really just a Ubuntu 20.04+ ZSH environment. macOS is supported by installing dependencies with `brew` where required. Windows 10 is supported with Ubuntu 18.04+ via WSL 2 👌
+This "cross-platform" setup of mine is really just a Ubuntu 20.04+ ZSH environment. Homebrew is used on both Ubuntu and macOS where possible. Windows 10 is supported with Ubuntu 18.04+ via WSL 2 👌
 
 ## Windows 10 WSL2 Setup
 
