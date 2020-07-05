@@ -2,11 +2,11 @@
 
 # Dotfiles & Developer Environment
 
-Cross-platform dotfiles & developer environment for Ubuntu 18.04+, macOS Catalina & Windows 10 with WSL2
+Cross-platform dotfiles & developer environment for Ubuntu 20.04+, macOS Catalina+ & Windows 10 with WSL2
 
 ![Lint](https://github.com/jthegedus/asdf-firebase/workflows/Lint/badge.svg)
 
-⚡️ tools for shell superpowers ⚡️<br/>[asdf](https://github.com/asdf-vm/asdf) · [shellcheck](https://github.com/koalaman/shellcheck) · [fzf](https://github.com/junegunn/fzf) · [z](https://github.com/rupa/z)
+⚡️ tools for shell superpowers ⚡️<br/>[asdf](https://github.com/asdf-vm/asdf) · [shellcheck](https://github.com/koalaman/shellcheck) · [navi](https://github.com/denisidoro/navi) · [z](https://github.com/rupa/z)
 
 </div>
 
@@ -36,10 +36,10 @@ Cross-platform dotfiles & developer environment for Ubuntu 18.04+, macOS Catalin
 
 This "cross-platform" setup of mine is really just a Ubuntu 20.04+ ZSH environment. macOS is supported by installing dependencies with `brew` where required. Windows 10 is supported with Ubuntu 18.04+ via WSL 2 👌
 
-## Windows 10 with WSL2
+## Windows 10 WSL2 Setup
 
 <details>
-<summary>Expand for Windows Setup</summary>
+<summary>Click to Expand for Windows Setup</summary>
 
 ### Enable WSL
 
@@ -53,17 +53,11 @@ This "cross-platform" setup of mine is really just a Ubuntu 20.04+ ZSH environme
 
 ### Ubuntu 20.04 on Windows
 
-Install the [Ubuntu 18.04 Shell](https://www.microsoft.com/store/productId/9N9TNGVNDL3Q).
+Install the [Ubuntu 20.04 Shell](https://www.microsoft.com/en-us/p/ubuntu-2004-lts/9n6svws3rx71).
 
 Boot the app and follow any instructions to setup your Ubuntu user profile.
 
 Update Ubuntu deps with: `sudo apt-get update && sudo apt-get upgrade`
-
-### A note on WSL 1 vs WSL 2
-
-This guide will work with WSL version 1 and 2. WSL 2 will be recommended for better Ubuntu support and an improved user experience when it moves into a stable release of Windows 10.
-
-If you intend to use WSL 2, then you will require a Windows build 18917+, currently available in the Insider Slow or Fast ring. [Read more about the requirements in the official release post](https://devblogs.microsoft.com/commandline/wsl-2-is-now-available-in-windows-insiders/).
 
 ### Set WSL2 Version
 
@@ -71,7 +65,7 @@ In powershell (admin) set the WSL version for your Ubuntu shell:
 
 ```shell
 # wsl --set-version <Distro> <Version>
-wsl --set-version Ubuntu-18.04 2
+wsl --set-version Ubuntu-20.04 2
 ```
 
 Validate the correct WSL version is being used:
@@ -88,43 +82,15 @@ Microsoft's new [Terminal application for Windows 10](https://www.microsoft.com/
 
 See the [development of Terminal on GitHub](https://github.com/microsoft/terminal).
 
-<details>
-<summary>Configuring the Terminal</summary>
-
-- settings is a JSON file (`profile.json`) so easily syncable over cloud storage or code repository
-- JSON Schema for `profile.json` provides autocompletion in editors for easy discovery of options
-- set the default shell using the `globals.defaultProfile` value with the guid from your desired profile `profile[x].guid`.
-- custom font via `profiles[x].fontFace` & `.fontSize`
-- custom theme per profile with `profiles[x].colorScheme`, set with the desired `schemes[x].name` value. Comes with Solarized Dark/Light, Campbell (MS default theme) and One Half Dark/Light
-- adjustable acrylic opacity (blur)
-- editable key bindings
-
-</details>
-
 ### VSCode with WSL 2
 
 With VSCode's remote server feature, we now have native support for WSL within VSCode! Simply run `code .` from within a project folder in any terminal, if VSCode detects it needs to use WSL it will 💯 See the [docs for further information](https://code.visualstudio.com/docs/remote/wsl).
 
 See the [VSCode remote server development on GitHub](https://github.com/microsoft/vscode-remote-release).
 
-### Prepare for Ubuntu 18.04
-
-The filesystem used by the Linux shell is hidden deep in your user's AppData folder. To make developing more convenient we will set up a symlink between our `projects` folder across the two environments.
-
-1. create a `projects` folder in your Windows user space. I like to use `C:\Users\<username>\projects`
-   > NB: Ubuntu will mount your `C:` drive to `/mnt/c`
-2. open a Ubuntu Shell
-3. create a symlink by linking your new `projects` folder from Windows to our Ubuntu userspace.
-
-   ```shell
-   ln -sv /mnt/c/Users/<username>/projects ~/projects
-   ```
-
-4. validate the symlink with `ls -la` and creating and editing a file from each userspace to see that the changes are reflected correctly.
-
 ### Last Steps
 
-Now that we have WSL 2 working and a Ubuntu 18.04 Bash shell we can essentially follow the below Ubuntu guide below ⬇️
+Now that we have WSL 2 working and a Ubuntu 20.04 Bash shell we can essentially follow the below Ubuntu guide below ⬇️
 
 </details>
 
@@ -133,8 +99,8 @@ Now that we have WSL 2 working and a Ubuntu 18.04 Bash shell we can essentially 
 Items installed in the following scripts include:
 
 - shell: [`zsh`](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) · [`oh-my-zsh`](https://github.com/ohmyzsh/ohmyzsh) · [`powerline fonts`](https://github.com/powerline/fonts) · [`starship cross-shell theme`](https://starship.rs/)
-- tools: [`asdf`](https://github.com/asdf-vm/asdf) · [`shellcheck`](https://github.com/koalaman/shellcheck) · [`fzf`](https://github.com/junegunn/fzf) · [`z`](https://github.com/rupa/z)
-- tools with asdf: [`nodejs`](https://github.com/asdf-vm/asdf-nodejs) · [`firebase`](https://github.com/jthegedus/asdf-firebase) · [`gcloud`](https://github.com/jthegedus/asdf-gcloud) · [`gradle`](https://github.com/rfrancis/asdf-gradle) · [`hadolint`](https://github.com/looztra/asdf-hadolint) · [`java`](https://github.com/halcyon/asdf-java) · [`maven`](https://github.com/halcyon/asdf-maven) · [`python`](https://github.com/danhper/asdf-python) · [`ocaml`](https://github.com/asdf-community/asdf-ocaml) · [`shellcheck`](https://github.com/luizm/asdf-shellcheck) · [`terraform`](https://github.com/Banno/asdf-hashicorp)
+- tools: [`asdf`](https://github.com/asdf-vm/asdf) · [`shellcheck`](https://github.com/koalaman/shellcheck) · [`navi`](https://github.com/denisidoro/navi) · [`z`](https://github.com/rupa/z)
+- tools with asdf: [`nodejs`](https://github.com/asdf-vm/asdf-nodejs) · [`deno`](https://github.com/asdf-community/asdf-deno) · [`firebase`](https://github.com/jthegedus/asdf-firebase) · [`gcloud`](https://github.com/jthegedus/asdf-gcloud) · [`hadolint`](https://github.com/looztra/asdf-hadolint) · [`java`](https://github.com/halcyon/asdf-java) · [`python`](https://github.com/danhper/asdf-python) · [`shellcheck`](https://github.com/luizm/asdf-shellcheck) · [`terraform`](https://github.com/Banno/asdf-hashicorp)
 
 and all system dependencies required by each of the above tools.
 
@@ -142,29 +108,29 @@ and all system dependencies required by each of the above tools.
 
 - clone my dotiles into the `projects` dir
 
-	```shell
-	cd ~ && git clone https://github.com/jthegedus/dotfiles ~/projects/dotfiles
-	```
+      	```shell
+      	cd ~ && git clone https://github.com/jthegedus/dotfiles ~/projects/dotfiles
+      	```
 
 - run the `setup-shell.bash` script
 
-	```shell
-	~/projects/dotfiles/scripts/setup-shell.bash
-	```
+      	```shell
+      	~/projects/dotfiles/scripts/setup-shell.bash
+      	```
 
 - update `config/initial-asdf-plugins.txt` with the desired `asdf` plugins you wish to use. The defaults are listed at the beginning of this section.
 
 - run the `setup-devtools.bash` script
 
-	```shell
-	~/projects/dotfiles/scripts/setup-devtools.bash
-	```
+      	```shell
+      	~/projects/dotfiles/scripts/setup-devtools.bash
+      	```
 
 - run the `setup-devtools.bash` script again (this is because `asdf` requires a shell restart to take effect. The script accounts for re-running)
 
-	```shell
-	~/projects/dotfiles/scripts/setup-devtools.bash
-	```
+      	```shell
+      	~/projects/dotfiles/scripts/setup-devtools.bash
+      	```
 
 ### Automated Cleanup
 
@@ -178,7 +144,7 @@ and all system dependencies required by each of the above tools.
 
 - open `scripts/setup-shell.bash` and `scripts/setup-devtools.bash` and copy/paste the commands you wish to use from top to bottom. It's fairly straight forward. If there is a tool you're unsure about either see my links at the top of the README or Google them 😉
 
-## Ubuntu 20.04 Applications
+## Ubuntu 20.04 Applications (only for Ubuntu OS)
 
 Runs this installation script to install my Ubuntu 20.04 application setup:
 
@@ -187,6 +153,9 @@ wget -O - https://raw.github.com/jthegedus/dotfiles/master/scripts/setup-ubuntu.
 # or with curl if it is already on your system
 bash -c "$(curl -fsSL https://raw.github.com/jthegedus/dotfiles/master/scripts/setup-ubuntu.bash)"
 ```
+
+<details>
+<summary>Click to Expand for Ubuntu Apps list</summary>
 
 #### Comes with the following apps
 
@@ -212,6 +181,8 @@ From the Ubuntu Store (snaps):
 - [Barrier](https://snapcraft.io/barrier): Cross-platform mouse/keyboard sharing. [Synergy](https://symless.com/synergy): The commercial reimplementation.
 - Gnome Extensions (requires `sudo apt-get install chrome-gnome-shell -y`): - [Sound Input & Output Device Chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/): Select audio IO from media dropdown. - [ShellTile](https://extensions.gnome.org/extension/657/shelltile/): A tiling window extension for GNOME Shell. - [Caffeine](https://extensions.gnome.org/extension/517/caffeine/): Disable the screensaver and auto suspend. - [Frippery Move Clock](https://extensions.gnome.org/extension/2/move-clock/): Move clock to left of status menu button. - [Panel OSD](https://extensions.gnome.org/extension/708/panel-osd/): Configuring where on the (main) screen notifications will appear, instead of just above the message tray.
 
+</details>
+
 ## VSCode
 
 Add VSCode to macOS path: https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line
@@ -221,7 +192,6 @@ Add VSCode to macOS path: https://code.visualstudio.com/docs/setup/mac#_launchin
 - [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync): Store your config in the cloud making multi-machine and reinstallations a breeze!
 - [shellcheck](https://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck): static analysis your `.sh` scripts. Requires [shellcheck itself](https://github.com/koalaman/shellcheck#shellcheck---a-shell-script-static-analysis-tool).
 - [shell format](https://github.com/foxundermoon/vs-shell-format): formats `.sh`, `.bash`, `Dockerfiles`, ignore files, amongst others.
-- [ReasonML language server](https://marketplace.visualstudio.com/items?itemName=jaredly.reason-vscode): written from scratch in Reason for Reason.
 
 ## Fonts
 
