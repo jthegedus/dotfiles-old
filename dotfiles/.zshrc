@@ -171,9 +171,9 @@ source_if_exists "$HOME/.aliases"
 # WIP. See here for now - https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line
 # add_path_to_global_path "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
+# shellcheck disable=SC1090
 [ "$(uname -s)" = "Darwin" ] &&
 	printf "%s\\n" "🦋  Load Navi" &&
-	# shellcheck disable=SC1090
 	source <(navi widget zsh)
 
 ### https://starship.rs
