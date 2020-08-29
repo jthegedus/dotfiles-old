@@ -61,8 +61,8 @@ else
 fi
 
 # add fonts for powerline
-# WARN: I have had issues with "fc-list | grep" on WSL2. The temp solution is toggle the comments of "installed_fonts" lines
-# installed_fonts=""
+# WARN: I have had issues with "fc-list | grep" on Ubuntu (native and WSL2). The temp solution is toggle the comments of "installed_fonts" lines
+installed_fonts=""
 # installed_fonts=$(fc-list : file family | grep --ignore-case "powerline")
 if [ -n "$installed_fonts" ]; then
 	log_success "Powerline fonts already installed"
