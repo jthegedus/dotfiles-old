@@ -100,7 +100,7 @@ Items installed in the following scripts include:
 
 - shell: [`zsh`](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) · [`oh-my-zsh`](https://github.com/ohmyzsh/ohmyzsh) · [`powerline fonts`](https://github.com/powerline/fonts) · [`starship cross-shell theme`](https://starship.rs/)
 - tools: [`asdf`](https://github.com/asdf-vm/asdf) · [`shellcheck`](https://github.com/koalaman/shellcheck) · [`navi`](https://github.com/denisidoro/navi) · [`z`](https://github.com/rupa/z)
-- tools with asdf: [`nodejs`](https://github.com/asdf-vm/asdf-nodejs) · [`deno`](https://github.com/asdf-community/asdf-deno) · [`firebase`](https://github.com/jthegedus/asdf-firebase) · [`gcloud`](https://github.com/jthegedus/asdf-gcloud) · [`hadolint`](https://github.com/looztra/asdf-hadolint) · [`java`](https://github.com/halcyon/asdf-java) · [`python`](https://github.com/danhper/asdf-python) · [`shellcheck`](https://github.com/luizm/asdf-shellcheck) · [`terraform`](https://github.com/Banno/asdf-hashicorp)
+- tools with asdf: [`nodejs`](https://github.com/asdf-vm/asdf-nodejs) · [`deno`](https://github.com/asdf-community/asdf-deno) · [`firebase`](https://github.com/jthegedus/asdf-firebase) · [`gcloud`](https://github.com/jthegedus/asdf-gcloud) · [`hadolint`](https://github.com/looztra/asdf-hadolint) · [`python`](https://github.com/danhper/asdf-python) · [`shellcheck`](https://github.com/luizm/asdf-shellcheck) · [`terraform`](https://github.com/Banno/asdf-hashicorp)
 
 and all system dependencies required by each of the above tools.
 
@@ -126,7 +126,9 @@ and all system dependencies required by each of the above tools.
     ~/projects/dotfiles/scripts/setup-devtools.bash
     ```
 
-5. run the `setup-devtools.bash` script again (this is because `asdf` requires a shell restart to take effect. The script accounts for re-running)
+5. restart your shell as required by `asdf`
+
+6. run the `setup-devtools.bash` script again (The script accounts for re-running)
 
     ```shell
     ~/projects/dotfiles/scripts/setup-devtools.bash
@@ -187,9 +189,9 @@ From the Ubuntu Store (snaps):
 
 Add VSCode to macOS path: https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line
 
-[My vscode sync-settings can be found here](https://gist.github.com/jthegedus/a692812095d3bf7efa132c5a1bfe8d71). Choice extensions include:
+Choice extensions include:
 
-- [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync): Store your config in the cloud making multi-machine and reinstallations a breeze!
+- Settings Sync: [Now built into VSCode](https://code.visualstudio.com/docs/editor/settings-sync)!
 - [shellcheck](https://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck): static analysis your `.sh` scripts. Requires [shellcheck itself](https://github.com/koalaman/shellcheck#shellcheck---a-shell-script-static-analysis-tool).
 - [shell format](https://github.com/foxundermoon/vs-shell-format): formats `.sh`, `.bash`, `Dockerfiles`, ignore files, amongst others.
 

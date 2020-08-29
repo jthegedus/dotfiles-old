@@ -1,7 +1,6 @@
 firebase latest
 golang latest
 hadolint v1.17.5
-java adoptopenjdk-11.0.6+10.1
 nodejs 14.8.0
 python latest
 shellcheck latest
