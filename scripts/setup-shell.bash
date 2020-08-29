@@ -6,17 +6,14 @@ set -eo pipefail
 source "$(dirname "$0")/utils.bash"
 
 # Homebrew
-if is_installed "brew"; then
-	log_success "Homebrew already installed"
-else
-	if [ -n "$LINUX" ]; then
-		sudo apt-get install build-essential curl file git -y
-		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-	elif [ -n "$MACOS" ]; then
+if [ -n "$MACOS" ]; then
+	if is_installed "brew"; then
+		log_success "Homebrew already installed"
+	else
 		xcode-select --install
 		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+		log_success "Brew installed successfully"
 	fi
-	log_success "Brew installed successfully"
 fi
 
 # Dependencies
@@ -85,13 +82,31 @@ else
 fi
 ############ END: ZSH
 
-# navi		- https://github.com/denisidoro/navi
-# z			- https://github.com/rupa/z
-# starship	- https://starship.rs/
-brew install \
-	navi \
-	z \
-	starship
+# starship theme
+if is_installed starship; then
+	log_success "Starship theme already installed"
+else
+	log_info "Installing Starship theme 🚀"
+	curl -fsSL https://starship.rs/install.sh | bash
+fi
+
+# install z
+if [ -f "${HOME}/z.sh" ]; then
+	log_success "z.sh already installed"
+else
+	log_info "Installing z"
+	wget -P "${HOME}" https://raw.githubusercontent.com/rupa/z/master/z.sh
+fi
+
+# navi - https://github.com/denisidoro/navi
+if [ -n "$MACOS" ]; then
+	if is_installed "navi"; then
+		log_success "Navi already installed"
+	else
+		brew install navi
+		log_success "Navi installed successfully"
+	fi
+fi
 
 # dynamically symlink all config/dotfiles to home directory
 # shellcheck source=./symlink-dotfiles.bash
