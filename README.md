@@ -112,7 +112,7 @@ and all system dependencies required by each of the above tools.
     cd ~ && git clone https://github.com/jthegedus/dotfiles ~/projects/dotfiles
     ```
 
-2. run the `setup-shell.bash` script
+2. run the `setup-shell.bash` script. This script is interactive! (`exit` OMZSH shell once it is default. Then restart your shell.)
 
     ```shell
     ~/projects/dotfiles/scripts/setup-shell.bash
