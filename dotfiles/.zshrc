@@ -79,6 +79,7 @@ plugins=(
 	asdf
 	docker
 	# gcloud
+	thefuck
 	git
 	golang
 	node
