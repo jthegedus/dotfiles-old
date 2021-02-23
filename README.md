@@ -2,29 +2,20 @@
 
 # Dotfiles & Developer Environment
 
-Cross-platform dotfiles & developer environment for Ubuntu 20.04+, macOS Catalina+ & Windows 10 with WSL2
+Cross-platform dotfiles & developer environment for Ubuntu 20.04+ ([PopOS](https://pop.system76.com/)), macOS Catalina+ & Windows 10 with WSL2
 
 ![Lint](https://github.com/jthegedus/asdf-firebase/workflows/Lint/badge.svg)
 
-⚡️ tools for shell superpowers ⚡️<br/>[asdf](https://github.com/asdf-vm/asdf) · [shellcheck](https://github.com/koalaman/shellcheck) · [navi](https://github.com/denisidoro/navi) · [z](https://github.com/rupa/z)
+⚡️ tools for shell superpowers ⚡️<br/>[asdf](https://github.com/asdf-vm/asdf) · [shellcheck](https://github.com/koalaman/shellcheck) · [navi](https://github.com/denisidoro/navi) · [thefuck](https://github.com/nvbn/thefuck) · [z](https://github.com/rupa/z)
 
 </div>
-
-> Update: ./config was renamed to ./dotfiles. To upgrade run:
->
-> ```shell
-> # cleanup old symlinks
-> rm -f ~/.zshrc ~/.aliases ~/.default-npm-packages ~/.config/starship.toml
-> # link new symlinks
-> bash ./scripts/symlink-dotfiles.bash
-> ```
 
 ## Contents
 
 - [Preamble](#preamble)
 - [Windows 10 with WSL2](#windows-10-with-wsl2)
-- [Ubuntu 20.04 or macOS Catalina](#ubuntu-2004-or-macos-catalina)
-- [Ubuntu 20.04 Applications](#ubuntu-2004-applications)
+- [Ubuntu 20.04+ or macOS Catalina+](#ubuntu-2004-or-macos-catalina)
+- [Ubuntu / PopOS Applications](#ubuntu--popos-applications)
 - [VSCode](#vscode)
 - [Fonts](#fonts)
 - [Ubuntu on various hardware](#ubuntu-on-various-hardware)
@@ -94,12 +85,12 @@ Now that we have WSL 2 working and a Ubuntu 20.04 Bash shell we can essentially 
 
 </details>
 
-## Ubuntu 20.04 or macOS Catalina
+## Ubuntu 20.04+ or macOS Catalina+
 
 Items installed in the following scripts include:
 
 - shell: [`zsh`](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) · [`oh-my-zsh`](https://github.com/ohmyzsh/ohmyzsh) · [`powerline fonts`](https://github.com/powerline/fonts) · [`starship cross-shell theme`](https://starship.rs/)
-- tools: [`asdf`](https://github.com/asdf-vm/asdf) · [`shellcheck`](https://github.com/koalaman/shellcheck) · [`navi`](https://github.com/denisidoro/navi) · [`z`](https://github.com/rupa/z)
+- tools: [`asdf`](https://github.com/asdf-vm/asdf) · [`shellcheck`](https://github.com/koalaman/shellcheck) · [`navi`](https://github.com/denisidoro/navi) · [thefuck](https://github.com/nvbn/thefuck) · [`z`](https://github.com/rupa/z)
 - tools with asdf: [`nodejs`](https://github.com/asdf-vm/asdf-nodejs) · [`deno`](https://github.com/asdf-community/asdf-deno) · [`firebase`](https://github.com/jthegedus/asdf-firebase) · [`gcloud`](https://github.com/jthegedus/asdf-gcloud) · [`hadolint`](https://github.com/looztra/asdf-hadolint) · [`python`](https://github.com/danhper/asdf-python) · [`shellcheck`](https://github.com/luizm/asdf-shellcheck) · [`terraform`](https://github.com/Banno/asdf-hashicorp)
 
 and all system dependencies required by each of the above tools.
@@ -108,31 +99,31 @@ and all system dependencies required by each of the above tools.
 
 1. clone my dotfiles into the `projects` dir
 
-    ```shell
-    cd ~ && git clone https://github.com/jthegedus/dotfiles ~/projects/dotfiles
-    ```
+   ```shell
+   cd ~ && git clone https://github.com/jthegedus/dotfiles ~/projects/dotfiles
+   ```
 
 2. run the `setup-shell.bash` script. This script is interactive! (`exit` OMZSH shell once it is default. Then restart your shell.)
 
-    ```shell
-    ~/projects/dotfiles/scripts/setup-shell.bash
-    ```
+   ```shell
+   ~/projects/dotfiles/scripts/setup-shell.bash
+   ```
 
 3. update `config/initial-asdf-plugins.txt` with the desired `asdf` plugins you wish to use. The defaults are listed at the beginning of this section.
 
 4. run the `setup-devtools.bash` script
 
-    ```shell
-    ~/projects/dotfiles/scripts/setup-devtools.bash
-    ```
+   ```shell
+   ~/projects/dotfiles/scripts/setup-devtools.bash
+   ```
 
 5. restart your shell as required by `asdf`
 
 6. run the `setup-devtools.bash` script again (The script accounts for re-running)
 
-    ```shell
-    ~/projects/dotfiles/scripts/setup-devtools.bash
-    ```
+   ```shell
+   ~/projects/dotfiles/scripts/setup-devtools.bash
+   ```
 
 ### Automated Cleanup
 
@@ -146,44 +137,24 @@ and all system dependencies required by each of the above tools.
 
 - open `scripts/setup-shell.bash` and `scripts/setup-devtools.bash` and copy/paste the commands you wish to use from top to bottom. It's fairly straight forward. If there is a tool you're unsure about either see my links at the top of the README or Google them 😉
 
-## Ubuntu 20.04 Applications (only for Ubuntu OS)
+## Ubuntu / PopOS Applications
 
-Runs this installation script to install my Ubuntu 20.04 application setup:
+I used to automate this process, but as time passes I reduce the tooling used to achieve particular tasks.
+
+These are the system deps I use in Ubuntu/PopOS:
 
 ```shell
-wget -O - https://raw.github.com/jthegedus/dotfiles/master/scripts/setup-ubuntu.bash | bash
-# or with curl if it is already on your system
-bash -c "$(curl -fsSL https://raw.github.com/jthegedus/dotfiles/master/scripts/setup-ubuntu.bash)"
+sudo apt install git curl tar apt-transport-https gnome-tweaks chrome-gnome-shell -y
 ```
 
-<details>
-<summary>Click to Expand for Ubuntu Apps list</summary>
+I rely on PopOS for:
 
-#### Comes with the following apps
+- tiling behaviour in Gnome as previous extensions I used were not as reliable
+- Pop Shop to install VSCode `.deb`
 
-From aptitude:
+Gnome Extensions:
 
-- `git`, `curl`, `tar`, `apt-transport-https`, `gnome-tweaks`
-
-From the web:
-
-- [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/): All the latest developer tools in beta, plus experimental features like the Multi-line Console Editor and WebSocket Inspector.
-
-From the Ubuntu Store (snaps):
-
-- [VSCode](https://code.visualstudio.com/): Mircosoft's free, open-source code editor.
-- [GitKraken](https://www.gitkraken.com/git-client): Cross-platform Git GUI.
-- [Slack](https://slack.com/): Team communication app.
-- [Discord](https://discordapp.com/): Community communication app.
-- [Signal](https://signal.org/): Privacy focused messaging app.
-
-#### Other apps worth considering
-
-- [Solaar](https://pwr.github.io/Solaar/): Logitech Wireless device management. `sudo apt install solaar`.
-- [Barrier](https://snapcraft.io/barrier): Cross-platform mouse/keyboard sharing. [Synergy](https://symless.com/synergy): The commercial reimplementation.
-- Gnome Extensions (requires `sudo apt-get install chrome-gnome-shell -y`): - [Sound Input & Output Device Chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/): Select audio IO from media dropdown. - [ShellTile](https://extensions.gnome.org/extension/657/shelltile/): A tiling window extension for GNOME Shell. - [Caffeine](https://extensions.gnome.org/extension/517/caffeine/): Disable the screensaver and auto suspend. - [Frippery Move Clock](https://extensions.gnome.org/extension/2/move-clock/): Move clock to left of status menu button. - [Panel OSD](https://extensions.gnome.org/extension/708/panel-osd/): Configuring where on the (main) screen notifications will appear, instead of just above the message tray.
-
-</details>
+- [Caffeine](https://extensions.gnome.org/extension/517/caffeine/): Disable the screensaver and auto suspend
 
 ## VSCode
 
@@ -213,6 +184,7 @@ Ubuntu installation will hang on a Lenovo ThinkPad E485/E585. Below are the inst
 - [19.04](https://medium.com/@jthegedus/ubuntu-19-04-lts-on-lenovo-thinkpad-e485-bf2d6cfd9cad)
 - [19.04 - PopOS!](https://medium.com/@jthegedus/popos-19-04-on-lenovo-thinkpad-e485-ac3951199132)
 - 20.04: it just works!
+- PopOS (20.04+): it just works!
 
 ### Dell XPS15 9560
 
