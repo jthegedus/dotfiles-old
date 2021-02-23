@@ -7,7 +7,8 @@ source "$(dirname "$0")/utils.bash"
 
 function asdf_plugin_setup() {
 	local plugin_name="${1}"
-	local plugin_version="${2}"
+	local plugin_url="${2}"
+	local plugin_version="${3}"
 
 	log_info "Installing ${plugin_name} via asdf"
 
@@ -41,7 +42,7 @@ function asdf_plugin_setup() {
 		fi
 	fi
 
-	asdf plugin add "${plugin_name}" || true
+	asdf plugin add "${plugin_name}" "${plugin_url}" || true
 	# TODO: fix so a more precise check of output is performed
 	#
 	# status_code=$(asdf plugin add "${plugin_name}")
@@ -82,8 +83,9 @@ initial_asdf_plugin_list="$(dirname "$(dirname "$0")")/config/initial-asdf-plugi
 if [ -f "$initial_asdf_plugin_list" ]; then
 	while read -r p || [ -n "$p" ]; do
 		plugin_name="$(cut -d ' ' -f1 <<<"$p")"
-		plugin_version="$(cut -d ' ' -f2 <<<"$p")"
-		asdf_plugin_setup "$plugin_name" "$plugin_version"
+		plugin_url="$(cut -d ' ' -f2 <<<"$p")"
+		plugin_version="$(cut -d ' ' -f3 <<<"$p")"
+		asdf_plugin_setup "$plugin_name" "$plugin_url" "$plugin_version"
 	done <"$initial_asdf_plugin_list"
 fi
 
