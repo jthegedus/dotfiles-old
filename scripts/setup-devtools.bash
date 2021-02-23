@@ -89,6 +89,12 @@ fi
 
 # Extras
 log_info "Installing Extras"
+
+# thefuck cli - requires pip3
+if is_installed "pip3"; then
+	pip3 install thefuck
+fi
+
 if [ -n "$LINUX" ]; then
 	# exfat support
 	sudo apt-get install exfat-fuse exfat-utils -y
