@@ -11,7 +11,7 @@ if [ -n "$MACOS" ]; then
 		log_success "Homebrew already installed"
 	else
 		xcode-select --install
-		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 		log_success "Brew installed successfully"
 	fi
 fi
@@ -54,7 +54,7 @@ if [ -d "$HOME/.oh-my-zsh" ]; then
 	log_success "oh-my-zsh already installed"
 else
 	log_info "Installing oh-my-zsh"
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
 
 	log_info "Installing zsh-syntax-highlighting plugin"
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
@@ -95,7 +95,7 @@ if [ -f "${HOME}/z.sh" ]; then
 	log_success "z.sh already installed"
 else
 	log_info "Installing z"
-	wget -P "${HOME}" https://raw.githubusercontent.com/rupa/z/master/z.sh
+	wget -P "${HOME}" https://raw.githubusercontent.com/rupa/z/HEAD/z.sh
 fi
 
 # navi - https://github.com/denisidoro/navi
