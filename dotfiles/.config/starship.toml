@@ -1,15 +1,13 @@
+# docs - https://starship.rs/config/
+
 [battery]
 full_symbol = "🔋  "
 charging_symbol = "⚡️  "
 discharging_symbol = "💀  "
 
 [character]
-symbol = "➜"
+success_symbol = "[➜](bold green)"
+error_symbol = "➜[➜](bold red)"
 
 [cmd_duration]
 min_time = 500
-
-# [time]
-# disabled = false
-# format = "🕙[ %T ]"
-# utc_time_offset = +10
