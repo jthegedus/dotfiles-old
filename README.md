@@ -12,14 +12,15 @@ Cross-platform dotfiles & developer environment for Ubuntu 20.04+ ([PopOS](https
 
 ## Contents
 
+- [Contents](#contents)
 - [Preamble](#preamble)
-- [Windows 10 with WSL2](#windows-10-with-wsl2)
+- [Windows 10 WSL2 Setup](#windows-10-wsl2-setup)
 - [Ubuntu 20.04+ or macOS Catalina+](#ubuntu-2004-or-macos-catalina)
 - [Ubuntu / PopOS Applications](#ubuntu--popos-applications)
 - [VSCode](#vscode)
 - [Fonts](#fonts)
 - [Ubuntu on various hardware](#ubuntu-on-various-hardware)
-- [Resources worth reading](#resources-worth-reading)
+- [Resources worth Reading](#resources-worth-reading)
 - [Contributions](#contributions)
 - [License](#license)
 
@@ -204,6 +205,10 @@ ZSH:
 Contributions of any kind welcome!
 
 [Thanks goes to these contributors](https://github.com/jthegedus/dotfiles/graphs/contributors)!
+
+### Why are there Node deps here?
+
+I decided the value of commitlint & husky was greater than not including these dev deps. Not only this, but dogfooding `asdf` for dev deps makes this less of an issue.
 
 ## License
 
