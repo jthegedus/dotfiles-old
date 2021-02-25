@@ -2,30 +2,17 @@ name: Lint
 on: [pull_request, push]
 
 jobs:
-  shellcheck:
-    name: shellcheck
+  test:
+    name: Shellcheck & Shell Format
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Update Shellcheck
-        run: |
-          sudo apt install xz-utils
-          scversion="stable"
-          wget -qO- "https://github.com/koalaman/shellcheck/releases/download/${scversion?}/shellcheck-${scversion?}.linux.x86_64.tar.xz" | tar -xJv
-          sudo cp "shellcheck-${scversion}/shellcheck" /usr/bin/
-          shellcheck --version
+      - name: asdf_install
+        uses: asdf-vm/actions/install@v1
       - name: Shellcheck
         run: shellcheck -x dotfiles/.zshrc scripts/* -P scripts/
-  shfmt:
-    name: shfmt
-    runs-on: macos-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Install Shell Format
-        run: brew install shfmt
-      - name: List files to check
+      - name: Shell Format - List files to check
         run: shfmt -f .
-      - name: Check Format
+      - name: Shell Format - Validate
         run: shfmt -d .
