@@ -10,6 +10,8 @@ jobs:
         uses: actions/checkout@v2
       - name: asdf_install
         uses: asdf-vm/actions/install@v1
+        with:
+          before_install: bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
       - name: Shellcheck
         run: shellcheck -x dotfiles/.zshrc scripts/* -P scripts/
       - name: Shell Format - List files to check
