@@ -1,12 +1,12 @@
 <div align="center">
 
-# Dotfiles & Developer Environment
+# Dotfiles & Developer Environment ![Lint](https://github.com/jthegedus/asdf-firebase/workflows/Lint/badge.svg)
 
 Cross-platform dotfiles & developer environment for Ubuntu 20.04+ ([PopOS](https://pop.system76.com/)), macOS Catalina+ & Windows 10 with WSL2
 
-![Lint](https://github.com/jthegedus/asdf-firebase/workflows/Lint/badge.svg)
-
 ⚡️ tools for shell superpowers ⚡️<br/>[asdf](https://github.com/asdf-vm/asdf) · [shellcheck](https://github.com/koalaman/shellcheck) · [navi](https://github.com/denisidoro/navi) · [thefuck](https://github.com/nvbn/thefuck) · [z](https://github.com/rupa/z)
+
+![jthegedus-dotfiles](./assets/dotfiles.png)
 
 </div>
 
