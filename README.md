@@ -14,7 +14,7 @@ Cross-platform dotfiles & developer environment for Ubuntu 20.04+ ([PopOS](https
 
 - [Contents](#contents)
 - [Preamble](#preamble)
-- [Windows 10 WSL2 Setup](#windows-10-wsl2-setup)
+- [Windows 11 WSL2 Setup](#windows-11-wsl2-setup)
 - [Ubuntu 20.04+ or macOS Catalina+](#ubuntu-2004-or-macos-catalina)
 - [Ubuntu / PopOS Applications](#ubuntu--popos-applications)
 - [VSCode](#vscode)
@@ -26,7 +26,7 @@ Cross-platform dotfiles & developer environment for Ubuntu 20.04+ ([PopOS](https
 
 ## Preamble
 
-This "cross-platform" setup of mine is really just a Ubuntu 20.04+ ZSH environment. Homebrew is used on both Ubuntu and macOS where possible. Windows 10 is supported with Ubuntu 20.04+ via WSL 2 👌
+This "cross-platform" setup of mine is really just a Ubuntu 20.04+ ZSH environment. Homebrew is used on both Ubuntu and macOS where possible. Windows 11 is supported with Ubuntu 20.04+ via WSL 2 👌
 
 ## Windows 11 WSL2 Setup
 
