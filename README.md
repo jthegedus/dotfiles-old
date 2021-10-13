@@ -2,7 +2,7 @@
 
 # Dotfiles & Developer Environment ![Lint](https://github.com/jthegedus/asdf-firebase/workflows/Lint/badge.svg)
 
-Cross-platform dotfiles & developer environment for Ubuntu 20.04+ ([PopOS](https://pop.system76.com/)), macOS Catalina+ & Windows 10 with WSL2
+Cross-platform dotfiles & developer environment for Ubuntu 20.04+ ([PopOS](https://pop.system76.com/)), macOS Catalina+ & Windows 11 with WSL2
 
 ⚡️ tools for shell superpowers ⚡️<br/>[asdf](https://github.com/asdf-vm/asdf) · [shellcheck](https://github.com/koalaman/shellcheck) · [navi](https://github.com/denisidoro/navi) · [thefuck](https://github.com/nvbn/thefuck) · [z](https://github.com/rupa/z)
 
@@ -28,20 +28,19 @@ Cross-platform dotfiles & developer environment for Ubuntu 20.04+ ([PopOS](https
 
 This "cross-platform" setup of mine is really just a Ubuntu 20.04+ ZSH environment. Homebrew is used on both Ubuntu and macOS where possible. Windows 10 is supported with Ubuntu 20.04+ via WSL 2 👌
 
-## Windows 10 WSL2 Setup
+## Windows 11 WSL2 Setup
 
 <details>
 <summary>Click to Expand for Windows Setup</summary>
 
 ### Enable WSL
 
+
 1. press `windows key`
-2. type `developer settings` & press `enter`
-3. select `developer mode`
-4. press `windows key`
-5. type `turn windows features on or off` & press `enter`
-6. check `Windows Subsystem for Linux` & then press `ok`
-7. reboot
+2. type `turn windows features on or off` & press `enter`
+3. check `Virtual Machine Platform` & then press `ok`
+4. reboot
+5. search `Windows Subsystem for Linux` in the App store and install
 
 ### Ubuntu 20.04 on Windows
 
@@ -70,9 +69,11 @@ See the [development of WSL on GitHub](https://github.com/microsoft/WSL).
 
 ### Windows Terminal
 
-Microsoft's new [Terminal application for Windows 10](https://www.microsoft.com/store/productId/9N0DX20HK701) is a modern terminal app with support for different shells, themes, tabs and unicode (read emoji) support.
+Microsoft's new [Terminal application for Windows](https://www.microsoft.com/store/productId/9N0DX20HK701) is a modern terminal app with support for different shells, themes, tabs and unicode (read emoji) support.
 
 See the [development of Terminal on GitHub](https://github.com/microsoft/terminal).
+
+Set the Ubuntu default dir with the steps from here: https://github.com/microsoft/terminal/issues/592#issuecomment-850550768
 
 ### VSCode with WSL 2
 
