@@ -83,8 +83,6 @@ plugins=(
 	git
 	golang
 	node
-	npm
-	npx
 	python
 	pip
 	zsh-syntax-highlighting
