@@ -1,0 +1,36 @@
+startup = [
+	# aliases
+	"alias ll = ls -al",
+	# "alias uu = sudo apt-get update; sudo apt-get upgrade -y",
+	# "alias uua = sudo apt-get update; sudo apt-get upgrade -y; sudo apt-get autoremove -y",
+	"alias q = cd ~",
+	"alias pj = cd ~/projects",
+	"alias df = (^df | detect columns | drop column | into filesize 1K-blocks Used Available)",
+	"alias cat = batcat",
+	"alias bat = batcat",
+	"alias fd = fdfind",
+	"alias lg = git log --all --decorate --oneline --graph",
+	"alias gcurl = curl --header Authorization: Bearer $(gcloud auth print-identity-token)",
+
+	# Zoxide
+	"zoxide init nushell --hook prompt | save /home/jthegedus/.zoxide.nu",
+	"source /home/jthegedus/.zoxide.nu",
+	# Starship
+	"mkdir /home/jthegedus/.cache/starship",
+	"starship init nu | save /home/jthegedus/.cache/starship/init.nu",
+	"source /home/jthegedus/.cache/starship/init.nu"
+]
+rm_always_trash = true
+path = [
+	# Zoxide - is installed via curl -sS https://webinstall.dev/zoxide | bash
+	"/home/jthegedus/.local/bin",
+	# asdf bins & shims
+	"/home/jthegedus/.asdf/bin",
+	"/home/jthegedus/.asdf/shims",
+]
+
+[env]
+ASDF_CONFIG_FILE = "/home/jthegedus/.config/asdf/.asdfrc"
+STARSHIP_CONFIG= "/home/jthegedus/.config/starship/config.toml"
+
+prompt = "starship_prompt"
