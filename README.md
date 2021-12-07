@@ -51,7 +51,7 @@ How you manage and install these 2 categories of software is very difficult to m
 
 Desired properties to tackle this problem can be observed below:
 
-| tool                          | os-level install | manages dep graph | version pinning per-project | debian/ubuntu | windows11 (non-WSL) | macos |
+| tool                          | os-level install | manages dep graph | version pinning per-project | Debian/Ubuntu | Windows11 (non-WSL) | macOS |
 | ----------------------------- | ---------------- | ----------------- | --------------------------- | ------------- | ------------------- | ----- |
 | aptitude                      | ✅                | ✅                 | ❌                           | ✅             | ❌                   | ❌     |
 | [`Homebrew`](https://brew.sh) | ✅                | ✅                 | ❌                           | ✅             | ❌                   | ✅     |
