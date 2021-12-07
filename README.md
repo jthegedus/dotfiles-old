@@ -50,17 +50,17 @@ How you manage and install these 2 categories of software is very difficult to m
 
 Desired properties to tackle this problem can be observed below:
 
-| tool                          | os-level install | manages dep graph | version pinning per-project | debian/ubuntu | windows11 | macos |
-| ----------------------------- | ---------------- | ----------------- | --------------------------- | ------------- | --------- | ----- |
-| aptitude                      | ✅                | ✅                 | ❌                           | ✅             | ❌         | ✅     |
-| [`Homebrew`](https://brew.sh) | ✅                | ✅                 | ❌                           | ✅             | ❌         | ✅     |
-| [`asdf`](https://asdf-vm.com) | ✅                | ❌                 | ✅                           | ✅             | ❌         | ✅     |
-| [`Nix`](https://nixos.org/)   | ✅*               | ✅                 | ✅                           | ✅             | ❌         | ✅     |
-| Docker/Vagrant                | ❌                | ✅                 | ✅                           | ✅             | ✅*        | ✅     |
+| tool                          | os-level install | manages dep graph | version pinning per-project | debian/ubuntu | windows11 (non-WSL) | macos |
+| ----------------------------- | ---------------- | ----------------- | --------------------------- | ------------- | ------------------- | ----- |
+| aptitude                      | ✅                | ✅                 | ❌                           | ✅             | ❌                   | ❌     |
+| [`Homebrew`](https://brew.sh) | ✅                | ✅                 | ❌                           | ✅             | ❌                   | ✅     |
+| [`asdf`](https://asdf-vm.com) | ✅                | ❌                 | ✅                           | ✅             | ❌                   | ✅     |
+| [`Nix`](https://nixos.org/)   | ✅*               | ✅                 | ✅                           | ✅             | ❌                   | ✅     |
+| Docker/Vagrant                | ❌                | ✅                 | ✅                           | ✅             | ✅*                  | ✅     |
 
 NixOS appears to be the best solution to this problem. Unfortunately it does not support windows11, NixOS is itself an operating system and configuration requires learning the `.nix` language.
 
-</details><br/>
+</details>
 
 In my opinion rolling version updates should use the systems native package manager. And unless you're willing to put in the hours to learn Nix then [`asdf`](https://asdf-vm.com) is a decent fit for version pinning per-project.
 
