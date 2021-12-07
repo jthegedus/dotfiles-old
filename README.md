@@ -6,17 +6,20 @@ Cross-platform dotfiles & developer environment for [PopOS](https://pop.system76
 
 </div>
 
-install with curl bash:
+Install with curl bash:
 
 ```shell
 curl -fsSL https://raw.githubusercontent.com/jthegedus/dotfiles/dotfiles.bash | bash
 ```
 
-or locally after clone:
+⚠️ Always read script contents before executing via "curl-bash" - read [Friends don't let friends Curl | Bash](https://sysdig.com/blog/friends-dont-let-friends-curl-bash/)
+
+Install locally after clone:
 
 ```shell
 bash ~/projects/dotfiles/dotfiles.bash
 ```
+
 
 ## Contents
 
