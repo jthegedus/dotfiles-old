@@ -9,7 +9,7 @@ Cross-platform dotfiles & developer environment for [PopOS](https://pop.system76
 Install with curl bash which will download, clone and execute script:
 
 ```shell
-curl -fsSL https://raw.githubusercontent.com/jthegedus/dotfiles/dotfiles.bash | bash
+curl -fsSL https://raw.githubusercontent.com/jthegedus/dotfiles/main/dotfiles.bash | bash
 ```
 
 ⚠️ Always read script contents before executing via "curl-bash" - read [Friends don't let friends Curl | Bash](https://sysdig.com/blog/friends-dont-let-friends-curl-bash/)
@@ -86,12 +86,12 @@ Naturally these should be managed per-project for which we have chosen [`asdf`](
 Not installed automatically with this repo's script, but worth looking into:
 
 - [`input-leap`](https://github.com/input-leap/input-leap) (fork of [Barrier](https://github.com/debauchee/barrier) which is fork of [Synergy 1.9](https://github.com/symless/synergy-core)): Open-source KVM software
-- [VSCode](https://code.visualstudio.com/)
+- [VSCode](https://code.visualstudio.com/): File editor with plugins. See https://vscode.dev for an in-browser experience.
 
 ### Fonts
 
-- [Microsoft's Cascadia Code with Powerlines](https://github.com/microsoft/cascadia-code): mono, ligatures, free
 - [JetBrains Mono](https://www.jetbrains.com/lp/mono/#how-to-install): mono, ligatures, free
+- [Microsoft's Cascadia Code with Powerlines](https://github.com/microsoft/cascadia-code): mono, ligatures, free
 - [Fira Code](https://github.com/tonsky/FiraCode): mono, ligatures, free
 - [Dank Mono](https://dank.sh/): mono, ligatures, paid (although reasonable)
 - [Hack](https://github.com/source-foundry/Hack): mono, free
