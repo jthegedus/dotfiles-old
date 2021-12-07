@@ -15,7 +15,7 @@ jobs:
       - name: asdf_install
         uses: asdf-vm/actions/install@v1
       - name: Shellcheck
-        run: shellcheck -x dotfiles/.zshrc scripts/* -P scripts/
+        run: shellcheck -x dotfiles.bash
       - name: Shell Format - List files to check
         run: shfmt -f .
       - name: Shell Format - Validate
