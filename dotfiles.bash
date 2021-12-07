@@ -58,7 +58,7 @@ main() {
 ### Utility Functions ###
 
 heading() {
-	printf '\n%s\n' "${BOLD}${BLUE}$*${NO_COLOUR}"
+	printf '\n%s\n' "${BOLD}${UNDERLINE}${BLUE}$*${NO_COLOUR}"
 }
 
 info() {
@@ -107,7 +107,8 @@ clone_dotfiles() {
 }
 
 setup_config_files() {
-	local config_root="$(dirname "$0")/.config"
+	local config_root
+	config_root="$(dirname "$0")/.config"
 
 	if [[ -n "$MACOS" ]]; then
 		config_root="$(greadlink -f "$config_root")" # requires coreutils
@@ -244,7 +245,7 @@ remove_dirs() {
 	rm -rf "${HOME}/.asdf" "${HOME}/.tool-versions"
 
 	info "removing zoxide & other webi installed tools"
-	rm -rf ${HOME}/.local/bin*/webi* "${HOME}/.local/opt" ${HOME}/.local/*bin* "${HOME}/.config/envman/" "${HOME}/.zoxide.nu"
+	rm -rf "${HOME}/.local/bin/webi" "${HOME}/.local/opt" "${HOME}/.local/bin" "${HOME}/.config/envman/" "${HOME}/.zoxide.nu"
 	if grep -q "envman" "${HOME}/.bashrc"; then
 		warn "You will need to remove these lines from your ${HOME}/.bashrc"
 		grep "envman" "${HOME}/.bashrc"
@@ -270,7 +271,6 @@ remove_dirs() {
 ### START ###
 
 BOLD="$(tput bold 2>/dev/null || printf "")"
-GREY="$(tput setaf 0 2>/dev/null || printf "")"
 UNDERLINE="$(tput smul 2>/dev/null || printf "")"
 RED="$(tput setaf 1 2>/dev/null || printf "")"
 GREEN="$(tput setaf 2 2>/dev/null || printf "")"
