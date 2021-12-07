@@ -99,7 +99,7 @@ Not installed automatically with this repo's script, but worth looking into:
 
 ### Linux / Gnome stuff
 
-I rely on PopOS for:
+I rely on the [PopOS](https://pop.system76.com/) distro for:
 
 - tiling behaviour in Gnome as previous extensions I used were not as reliable
 
