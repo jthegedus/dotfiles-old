@@ -33,6 +33,7 @@ bash ~/projects/dotfiles/dotfiles.bash
 	- [Fonts](#fonts)
 	- [Linux / Gnome stuff](#linux--gnome-stuff)
 - [Uninstall](#uninstall)
+- [Why Nushell](#why-nushell)
 - [TODO](#todo)
 - [License](#license)
 
@@ -117,6 +118,27 @@ or locally
 ```shell
 bash ~/projects/dotfiles/dotfiles.bash --uninstall
 ```
+
+## Why [Nushell](https://nushell.sh)
+
+Nushell has a delightful core set of features that allow easy replacement of many tools. It achieves most of these features by treating "everything as data". For example, [jq](https://stedolan.github.io/jq/) or [jql](https://github.com/yamafaktory/jql) can be replaced with inbuilt commands:
+
+```shell
+dotfiles on  main took 521ms 
+➜ fetch https://api.github.com/repos/jthegedus/dotfiles | select created_at
+───┬──────────────────────
+ # │      created_at      
+───┼──────────────────────
+ 0 │ 2017-03-28T01:04:13Z 
+───┴──────────────────────
+
+
+dotfiles on  main 
+➜ (fetch https://api.github.com/repos/jthegedus/dotfiles).created_at
+2017-03-28T01:04:13Z
+```
+
+Over the years I have slowly moved from extremely custom systems to a smaller set of more powerful tools allowing the same flexibility. From i3wm on Ubuntu to PopOS with it's tiling defaults, bash -> zsh -> nushell achieves the same simplification of toolset by utilising a newer tool that is built on the experience and learning from the past.
 
 ## TODO
 
