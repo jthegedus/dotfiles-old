@@ -119,7 +119,7 @@ or locally
 bash ~/projects/dotfiles/dotfiles.bash --uninstall
 ```
 
-## Why [Nushell](https://nushell.sh)
+## Why [Nushell](https://www.nushell.sh)
 
 Nushell has a delightful core set of features that allow easy replacement of many tools. It achieves most of these features by treating "everything as data". For example, [jq](https://stedolan.github.io/jq/) or [jql](https://github.com/yamafaktory/jql) can be replaced with inbuilt commands:
 
