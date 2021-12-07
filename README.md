@@ -2,173 +2,93 @@
 
 # Dotfiles & Developer Environment ![Lint](https://github.com/jthegedus/asdf-firebase/workflows/Lint/badge.svg)
 
-Cross-platform dotfiles & developer environment for Ubuntu 20.04+ ([PopOS](https://pop.system76.com/)), macOS Catalina+ & Windows 11 with WSL2
-
-⚡️ tools for shell superpowers ⚡️<br/>[asdf](https://github.com/asdf-vm/asdf) · [shellcheck](https://github.com/koalaman/shellcheck) · [navi](https://github.com/denisidoro/navi) · [thefuck](https://github.com/nvbn/thefuck) · [z](https://github.com/rupa/z)
-
-![jthegedus-dotfiles](./assets/dotfiles.png)
+Cross-platform dotfiles & developer environment for [PopOS](https://pop.system76.com/) (Ubuntu), macOS Catalina+ & Windows 11 with WSL2
 
 </div>
+
+Install with curl bash which will download, clone and execute script:
+
+```shell
+curl -fsSL https://raw.githubusercontent.com/jthegedus/dotfiles/dotfiles.bash | bash
+```
+
+⚠️ Always read script contents before executing via "curl-bash" - read [Friends don't let friends Curl | Bash](https://sysdig.com/blog/friends-dont-let-friends-curl-bash/)
+
+Run install script locally after clone:
+
+```shell
+git clone https://github.com/jthegedus/dotfiles ~/projects/dotfiles
+bash ~/projects/dotfiles/dotfiles.bash
+```
+
 
 ## Contents
 
 - [Contents](#contents)
-- [Preamble](#preamble)
-- [Windows 11 WSL2 Setup](#windows-11-wsl2-setup)
-- [Ubuntu 20.04+ or macOS Catalina+](#ubuntu-2004-or-macos-catalina)
-- [Ubuntu / PopOS Applications](#ubuntu--popos-applications)
-- [VSCode](#vscode)
-- [Fonts](#fonts)
-- [Ubuntu on various hardware](#ubuntu-on-various-hardware)
-- [Resources worth Reading](#resources-worth-reading)
-- [Contributions](#contributions)
+- [Types of Software](#types-of-software)
+- [Installled with script](#installled-with-script)
+	- [Rolling Version Software](#rolling-version-software)
+	- [Pinned Version Software](#pinned-version-software)
+- [Other Useful Software](#other-useful-software)
+	- [Fonts](#fonts)
+	- [Linux / Gnome stuff](#linux--gnome-stuff)
+- [Uninstall](#uninstall)
+- [TODO](#todo)
 - [License](#license)
 
-## Preamble
+## Types of Software
 
-This "cross-platform" setup of mine is really just a Ubuntu 20.04+ ZSH environment. Homebrew is used on both Ubuntu and macOS where possible. Windows 11 is supported with Ubuntu 20.04+ via WSL 2 👌
+There are 2 categories of software:
 
-## Windows 11 WSL2 Setup
+1. install once with rolling version updates: OS, browsers, editors, shells, prompts etc.
+2. install multiple times & pin to specific versions: runtimes and tools used to develop & build projects defined on a per-project basis ([`asdf`](https://asdf-vm.com) as an example)
 
 <details>
-<summary>Click to Expand for Windows Setup</summary>
+<summary>Available solutions to this problem</summary>
 
-### Enable WSL
+How you manage and install these 2 categories of software is very difficult to maintain, especially across multiple machines and OSs. How should you manage dependencies that span the boundaries of these two types of top-level software categories? Eg: your browser could require a dependency to be updated that is used by a pinned version of a runtime used for a specific project. There doesn't seem to be a perfect solution.
 
+Desired properties to tackle this problem can be observed below:
 
-1. press `windows key`
-2. type `turn windows features on or off` & press `enter`
-3. check `Virtual Machine Platform` & then press `ok`
-4. reboot
-5. search `Windows Subsystem for Linux` in the App store and install
+| tool                          | os-level install | manages dep graph | version pinning per-project | debian/ubuntu | windows11 | macos |
+| ----------------------------- | ---------------- | ----------------- | --------------------------- | ------------- | --------- | ----- |
+| aptitude                      | ✅                | ✅                 | ❌                           | ✅             | ❌         | ✅     |
+| [`Homebrew`](https://brew.sh) | ✅                | ✅                 | ❌                           | ✅             | ❌         | ✅     |
+| [`asdf`](https://asdf-vm.com) | ✅                | ❌                 | ✅                           | ✅             | ❌         | ✅     |
+| [`Nix`](https://nixos.org/)   | ✅*               | ✅                 | ✅                           | ✅             | ❌         | ✅     |
+| Docker/Vagrant                | ❌                | ✅                 | ✅                           | ✅             | ✅*        | ✅     |
 
-### Ubuntu 20.04 on Windows
+NixOS appears to be the best solution to this problem. Unfortunately it does not support windows11, NixOS is itself an operating system and configuration requires learning the `.nix` language.
 
-Install the [Ubuntu 20.04 Shell](https://www.microsoft.com/en-us/p/ubuntu-2004-lts/9n6svws3rx71).
+</details><br/>
 
-Boot the app and follow any instructions to setup your Ubuntu user profile.
+In my opinion rolling version updates should use the systems native package manager. And unless you're willing to put in the hours to learn Nix then [`asdf`](https://asdf-vm.com) is a decent fit for version pinning per-project.
 
-Update Ubuntu deps with: `sudo apt-get update && sudo apt-get upgrade`
+## Installled with script
 
-### Set WSL2 Version
+### Rolling Version Software
 
-In powershell (admin) set the WSL version for your Ubuntu shell:
+- [`nushell`](https://www.nushell.sh/): a new type of shell
+- [`starship`](https://starship.rs/): cross-shell theme
+- [`asdf`](https://asdf-vm.com): Manage multiple runtime versions with a single CLI tool
+- [`powerline fonts`](https://github.com/powerline/fonts)
+- [`ripgrep`](https://github.com/BurntSushi/ripgrep): recursively search directories for a regex pattern while respecting your gitignore
+- [`zoxide`](https://github.com/ajeetdsouza/zoxide): A smarter cd command
+- [`bat`](https://github.com/sharkdp/bat): A cat(1) clone with wings
+- [`fd`](https://github.com/sharkdp/fd): A simple, fast and user-friendly alternative to 'find'
 
-```shell
-# wsl --set-version <Distro> <Version>
-wsl --set-version Ubuntu-20.04 2
-```
+### Pinned Version Software
 
-Validate the correct WSL version is being used:
+Naturally these should be managed per-project for which we have chosen [`asdf`](https://github.com/asdf-vm/asdf).
 
-```shell
-wsl --list --verbose
-```
+## Other Useful Software
 
-See the [development of WSL on GitHub](https://github.com/microsoft/WSL).
+Not installed automatically with this repo's script, but worth looking into:
 
-### Windows Terminal
+- [`input-leap`](https://github.com/input-leap/input-leap) (fork of [Barrier](https://github.com/debauchee/barrier) which is fork of [Synergy 1.9](https://github.com/symless/synergy-core)): Open-source KVM software
+- [VSCode](https://code.visualstudio.com/)
 
-Microsoft's new [Terminal application for Windows](https://www.microsoft.com/store/productId/9N0DX20HK701) is a modern terminal app with support for different shells, themes, tabs and unicode (read emoji) support.
-
-See the [development of Terminal on GitHub](https://github.com/microsoft/terminal).
-
-Set the Ubuntu default dir with the steps from here: https://github.com/microsoft/terminal/issues/592#issuecomment-850550768
-
-### VSCode with WSL 2
-
-With VSCode's remote server feature, we now have native support for WSL within VSCode! Simply run `code .` from within a project folder in any terminal, if VSCode detects it needs to use WSL it will 💯 See the [docs for further information](https://code.visualstudio.com/docs/remote/wsl).
-
-See the [VSCode remote server development on GitHub](https://github.com/microsoft/vscode-remote-release).
-
-### Last Steps
-
-Now that we have WSL 2 working and a Ubuntu 20.04 Bash shell we can essentially follow the below Ubuntu guide below ⬇️
-
-</details>
-
-## Ubuntu 20.04+ or macOS Catalina+
-
-Items installed in the following scripts include:
-
-- shell: [`zsh`](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) · [`oh-my-zsh`](https://github.com/ohmyzsh/ohmyzsh) · [`powerline fonts`](https://github.com/powerline/fonts) · [`starship cross-shell theme`](https://starship.rs/)
-- tools: [`asdf`](https://github.com/asdf-vm/asdf) · [`shellcheck`](https://github.com/koalaman/shellcheck) · [`navi`](https://github.com/denisidoro/navi) · [thefuck](https://github.com/nvbn/thefuck) · [`z`](https://github.com/rupa/z)
-- tools with asdf: [`nodejs`](https://github.com/asdf-vm/asdf-nodejs) · [`deno`](https://github.com/asdf-community/asdf-deno) · [`firebase`](https://github.com/jthegedus/asdf-firebase) · [`gcloud`](https://github.com/jthegedus/asdf-gcloud) · [`hadolint`](https://github.com/looztra/asdf-hadolint) · [`python`](https://github.com/danhper/asdf-python) · [`shellcheck`](https://github.com/luizm/asdf-shellcheck) · [`terraform`](https://github.com/Banno/asdf-hashicorp)
-
-and all system dependencies required by each of the above tools.
-
-### Automated Installation
-
-1. clone my dotfiles into the `projects` dir
-
-   ```shell
-   cd ~ && git clone https://github.com/jthegedus/dotfiles ~/projects/dotfiles
-   ```
-
-2. run the `setup-shell.bash` script. This script is interactive! (`exit` OMZSH shell once it is default. Then restart your shell.)
-
-   ```shell
-   ~/projects/dotfiles/scripts/setup-shell.bash
-   ```
-
-3. update `config/initial-asdf-plugins.txt` with the desired `asdf` plugins you wish to use. The defaults are listed at the beginning of this section.
-
-4. run the `setup-devtools.bash` script
-
-   ```shell
-   ~/projects/dotfiles/scripts/setup-devtools.bash
-   ```
-
-5. restart your shell as required by `asdf`
-
-6. run the `setup-devtools.bash` script again (The script accounts for re-running)
-
-   ```shell
-   ~/projects/dotfiles/scripts/setup-devtools.bash
-   ```
-
-### Automated Cleanup
-
-- run the `cleanup.bash` script
-
-```shell
-~/projects/dotfiles/scripts/cleanup.bash
-```
-
-### Manual Installation
-
-- open `scripts/setup-shell.bash` and `scripts/setup-devtools.bash` and copy/paste the commands you wish to use from top to bottom. It's fairly straight forward. If there is a tool you're unsure about either see my links at the top of the README or Google them 😉
-
-## Ubuntu / PopOS Applications
-
-I used to automate this process, but as time passes I reduce the tooling used to achieve particular tasks.
-
-These are the system deps I use in Ubuntu/PopOS:
-
-```shell
-sudo apt install git curl tar apt-transport-https gnome-tweaks chrome-gnome-shell -y
-```
-
-I rely on PopOS for:
-
-- tiling behaviour in Gnome as previous extensions I used were not as reliable
-- Pop Shop to install VSCode `.deb`
-
-Gnome Extensions:
-
-- [Caffeine](https://extensions.gnome.org/extension/517/caffeine/): Disable the screensaver and auto suspend
-
-## VSCode
-
-Add VSCode to macOS path: https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line
-
-Choice extensions include:
-
-- Settings Sync: [Now built into VSCode](https://code.visualstudio.com/docs/editor/settings-sync)!
-- [shellcheck](https://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck): static analysis your `.sh` scripts. Requires [shellcheck itself](https://github.com/koalaman/shellcheck#shellcheck---a-shell-script-static-analysis-tool).
-- [shell format](https://github.com/foxundermoon/vs-shell-format): formats `.sh`, `.bash`, `Dockerfiles`, ignore files, amongst others.
-
-## Fonts
+### Fonts
 
 - [Microsoft's Cascadia Code with Powerlines](https://github.com/microsoft/cascadia-code): mono, ligatures, free
 - [JetBrains Mono](https://www.jetbrains.com/lp/mono/#how-to-install): mono, ligatures, free
@@ -176,42 +96,33 @@ Choice extensions include:
 - [Dank Mono](https://dank.sh/): mono, ligatures, paid (although reasonable)
 - [Hack](https://github.com/source-foundry/Hack): mono, free
 
-## Ubuntu on various hardware
+### Linux / Gnome stuff
 
-### Lenovo ThinkPad E485/E585
+I rely on PopOS for:
 
-Ubuntu installation will hang on a Lenovo ThinkPad E485/E585. Below are the instructions I followed to remedy the issues:
+- tiling behaviour in Gnome as previous extensions I used were not as reliable
 
-- [18.04 / 18.10](https://medium.com/@jthegedus/ubuntu-18-04-lts-on-lenovo-thinkpad-e485-15e1d601473f)
-- [19.04](https://medium.com/@jthegedus/ubuntu-19-04-lts-on-lenovo-thinkpad-e485-bf2d6cfd9cad)
-- [19.04 - PopOS!](https://medium.com/@jthegedus/popos-19-04-on-lenovo-thinkpad-e485-ac3951199132)
-- 20.04: it just works!
-- PopOS (20.04+): it just works!
+Gnome Extensions:
 
-### Dell XPS15 9560
+- [Caffeine](https://extensions.gnome.org/extension/517/caffeine/): Disable the screensaver and auto suspend
 
-On login the OS may hang. Below are the instructions I followed to remedy the issues:
+## Uninstall
 
-- [18.04 / 18.10](https://medium.com/@jthegedus/ubuntu-18-04-lts-on-a-dell-xps-db4dcee9a2f9)
+```shell
+curl -fsSL https://raw.githubusercontent.com/jthegedus/dotfiles/dotfiles.bash | bash -- -s --uninstall
+```
 
-## Resources worth Reading
+or locally
 
-ZSH:
+```shell
+bash ~/projects/dotfiles/dotfiles.bash --uninstall
+```
 
-- [Bash 2 ZSH reference card](http://www.bash2zsh.com/zsh_refcard/refcard.pdf): Bash user's guide to ZSH
-- [ZSH Lovers](http://grml.org/zsh/zsh-lovers.html): Z Shell tips and tricks
+## TODO
 
-## Contributions
-
-Contributions of any kind welcome!
-
-[Thanks goes to these contributors](https://github.com/jthegedus/dotfiles/graphs/contributors)!
-
-### Why are there Node deps here?
-
-I decided the value of [commitlint](https://commitlint.js.org/#/) & sharing Git Hooks with [husky](https://typicode.github.io/husky/#/) were greater than the cost of including these deps. Not only this, but dogfooding `asdf` for dev deps makes this less of an issue.
-
-After clone, run `asdf install`, then `npm i` and you're good to go :)
+- macOS support in installer script
+- native Windows11 support
+- find binary alternative(s) to [thefuck](https://github.com/nvbn/thefuck)
 
 ## License
 

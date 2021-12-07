@@ -1,5 +1,9 @@
 name: Lint
-on: [pull_request, push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
   test:
@@ -10,10 +14,8 @@ jobs:
         uses: actions/checkout@v2
       - name: asdf_install
         uses: asdf-vm/actions/install@v1
-        with:
-          before_install: bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
       - name: Shellcheck
-        run: shellcheck -x dotfiles/.zshrc scripts/* -P scripts/
+        run: shellcheck -x dotfiles.bash
       - name: Shell Format - List files to check
         run: shfmt -f .
       - name: Shell Format - Validate
