@@ -104,6 +104,7 @@ clone_dotfiles() {
 	git clone "https://github.com/jthegedus/dotfiles.git" "${HOME}/projects/dotfiles" || true
 	info "Replace jthegedus in ${HOME}/projects/dotfiles/.config/nu/config.toml with ${USER}"
 	sed -i.bak "s,jthegedus,${USER},g" "${HOME}/projects/dotfiles/.config/nu/config.toml"
+	rm -rf "${HOME}/projects/dotfiles/.config/nu/config.toml.bak"
 }
 
 setup_config_files() {
@@ -158,7 +159,7 @@ install_tools() {
 		git clone https://github.com/asdf-vm/asdf.git "${HOME}/.asdf" || true
 
 		info "Installing powerline fonts"
-		FONT_DIR=$(mktemp -d "${TMPDIR:-/tmp}"/dotfiles_setup.XXXX/)
+		FONT_DIR=$(mktemp -d "${TMPDIR:-/tmp}"/dotfiles_setup.XXXX)
 		git clone https://github.com/powerline/fonts.git --depth=1 "${FONT_DIR}"
 		"${FONT_DIR}/install.sh"
 		rm -rf "${FONT_DIR}"
