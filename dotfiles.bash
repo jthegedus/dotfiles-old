@@ -104,7 +104,7 @@ clone_dotfiles() {
 	git clone "https://github.com/jthegedus/dotfiles.git" "${HOME}/projects/dotfiles" || true
 	info "Replace jthegedus in ${HOME}/projects/dotfiles/.config/nu/config.toml with ${USER}"
 	sed -i.bak "s,jthegedus,${USER},g" "${HOME}/projects/dotfiles/.config/nu/config.toml"
-	rm -rf "${HOME}/projects/dotfiles/.config/nu/config.toml.bak"
+	rm "${HOME}/projects/dotfiles/.config/nu/config.toml.bak"
 }
 
 setup_config_files() {
