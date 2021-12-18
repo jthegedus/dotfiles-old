@@ -120,11 +120,11 @@ setup_config_files() {
 	heading "Setup config files"
 	# nushell does not like symlinked config files, use cp
 	mkdir -p "${HOME}/.config/nu" &&
-		ln -bsv "${config_root}/nu/config.toml" "${HOME}/.config/nu/config.toml"
+		ln -sv "${config_root}/nu/config.toml" "${HOME}/.config/nu/config.toml"
 	mkdir -p "${HOME}/.config/starship" &&
-		ln -bsv "${config_root}/starship/config.toml" "${HOME}/.config/starship/config.toml"
+		ln -sv "${config_root}/starship/config.toml" "${HOME}/.config/starship/config.toml"
 	mkdir -p "${HOME}/.config/asdf" &&
-		ln -bsv "${config_root}/asdf/.asdfrc" "${HOME}/.config/asdf/.asdfrc"
+		ln -sv "${config_root}/asdf/.asdfrc" "${HOME}/.config/asdf/.asdfrc"
 }
 
 install_tools() {

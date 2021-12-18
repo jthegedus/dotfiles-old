@@ -1,3 +1,4 @@
+prompt = "starship prompt"
 startup = [
 	# aliases
 	"alias ll = ls -al",
@@ -33,4 +34,3 @@ path = [
 ASDF_CONFIG_FILE = "/home/jthegedus/.config/asdf/.asdfrc"
 STARSHIP_CONFIG= "/home/jthegedus/.config/starship/config.toml"
 
-prompt = "starship_prompt"
