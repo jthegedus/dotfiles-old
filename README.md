@@ -97,11 +97,13 @@ Not installed automatically with this repo's script, but worth looking into:
 - [Dank Mono](https://dank.sh/): mono, ligatures, paid (although reasonable)
 - [Hack](https://github.com/source-foundry/Hack): mono, free
 
-### Linux / Gnome stuff
+### PopOS / Gnome stuff
 
 I rely on the [PopOS](https://pop.system76.com/) distro for:
 
 - tiling behaviour in Gnome as previous extensions I used were not as reliable
+- make tab switching swap all app windows not just apps:
+	 Settings > Keyboard > customize keyboard shortcuts > Navigation > Switch Windows: set to use the keyboard combo you like, eg: `alt+tab`
 
 Gnome Extensions:
 
@@ -145,6 +147,10 @@ Over the years I have slowly moved from extremely custom systems to a smaller se
 - macOS support in installer script
 - native Windows11 support
 - find binary alternative(s) to [thefuck](https://github.com/nvbn/thefuck)
+- per-directory gitconfigs like https://stackoverflow.com/a/43884702
+	- global with includes to per-dir configs: `~/.gitconfig` -> symlinked to `~/projects/dotfiles/gitconfigs/.global.gitconfig`
+	- personal: `~/projects/dotfiles/gitconfigs/.personal.gitconfig`
+	- work: `~/projects/dotfiles/gitconfigs/.work.gitconfig`
 
 ## License
 
