@@ -118,13 +118,15 @@ setup_config_files() {
 	fi
 
 	heading "Setup config files"
-	# nushell does not like symlinked config files, use cp
-	mkdir -p "${HOME}/.config/nu" &&
-		ln -sv "${config_root}/nu/config.toml" "${HOME}/.config/nu/config.toml"
+	mkdir -p "${HOME}/.config/nushell" &&
+	ln -sf "${config_root}/nushell/config.nu" "${HOME}/.config/nushell/config.nu" &&
+	ln -sf "${config_root}/nushell/env.nu" "${HOME}/.config/nushell/env.nu"
+
 	mkdir -p "${HOME}/.config/starship" &&
-		ln -sv "${config_root}/starship/config.toml" "${HOME}/.config/starship/config.toml"
+	ln -sf "${config_root}/starship/config.toml" "${HOME}/.config/starship/config.toml"
+
 	mkdir -p "${HOME}/.config/asdf" &&
-		ln -sv "${config_root}/asdf/.asdfrc" "${HOME}/.config/asdf/.asdfrc"
+	ln -sf "${config_root}/asdf/.asdfrc" "${HOME}/.config/asdf/.asdfrc"
 }
 
 install_tools() {
@@ -147,7 +149,7 @@ install_tools() {
 		rm "${DL_DIR}/nu_${NU_VERSION_UNDERSCORE}_linux.tar.gz"
 
 		info "Install Starship"
-		curl -fsSL https://starship.rs/install.sh | bash -s -- --yes
+		curl -fsSL https://starship.rs/install.sh | sh -s -- --yes
 
 		info "Install zoxide"
 		curl -fsSL https://webinstall.dev/zoxide | bash
@@ -165,7 +167,7 @@ install_tools() {
 		rm -rf "${FONT_DIR}"
 
 		info "Install exfat support"
-		sudo apt-get install exfat-fuse exfat-utils -y
+		sudo apt-get install exfat-fuse -y
 
 		info "Increase maximum file watchers"
 		write_line_to_file_if_not_exists "fs.inotify.max_user_watches=524288" "/etc/sysctl.conf"
