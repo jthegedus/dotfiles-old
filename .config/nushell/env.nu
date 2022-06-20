@@ -77,7 +77,7 @@ let paths_to_append = [
   ($env.HOME + '/.asdf/shims')
 ]
 # PATH: append to PATH if not already in PATH
-let-env PATH = ($env.PATH | append (paths_to_append | where $it not-in $env.PATH))
+let-env PATH = ($env.PATH | append ($paths_to_append | where $it not-in $env.PATH))
 
 # TODO(jthegedus): validate this works
 let-env rm_always_trash = true
