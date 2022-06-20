@@ -119,14 +119,14 @@ setup_config_files() {
 
 	heading "Setup config files"
 	mkdir -p "${HOME}/.config/nushell" &&
-	ln -sf "${config_root}/nushell/config.nu" "${HOME}/.config/nushell/config.nu" &&
-	ln -sf "${config_root}/nushell/env.nu" "${HOME}/.config/nushell/env.nu"
+		ln -sf "${config_root}/nushell/config.nu" "${HOME}/.config/nushell/config.nu" &&
+		ln -sf "${config_root}/nushell/env.nu" "${HOME}/.config/nushell/env.nu"
 
 	mkdir -p "${HOME}/.config/starship" &&
-	ln -sf "${config_root}/starship/config.toml" "${HOME}/.config/starship/config.toml"
+		ln -sf "${config_root}/starship/config.toml" "${HOME}/.config/starship/config.toml"
 
 	mkdir -p "${HOME}/.config/asdf" &&
-	ln -sf "${config_root}/asdf/.asdfrc" "${HOME}/.config/asdf/.asdfrc"
+		ln -sf "${config_root}/asdf/.asdfrc" "${HOME}/.config/asdf/.asdfrc"
 }
 
 install_tools() {
@@ -257,13 +257,11 @@ remove_dirs() {
 	info "removing starship"
 	sudo rm "$(which starship)" || true
 
-	# TODO(jthegedus): this does not change `SHELL` in `printenv`
-	# info "Setting shell to /bin/bash"
-	# chsh -s "/bin/bash"
+	info "Setting shell to /bin/bash"
+	chsh -s "/bin/bash"
 
-	# TODO(jthegedus): these env vars still appear in `printenv` after `unset` is called even with `./` execution
-	# info "clear exported env vars: PROMPT_COMMAND, STARSHIP_SHELL"
-	# unset PROMPT_COMMAND STARSHIP_SHELL STARSHIP_SESSION_KEY
+	info "clear exported env vars: PROMPT_COMMAND, STARSHIP_SHELL"
+	unset PROMPT_COMMAND STARSHIP_SHELL STARSHIP_SESSION_KEY
 
 	info "removing nushell"
 	rm -rf "${HOME}/.nushell"
