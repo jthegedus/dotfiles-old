@@ -60,16 +60,35 @@ let-env NU_PLUGIN_DIRS = [
 # CUSTOM Configs
 #
 # starship config
-let-env STARSHIP_CONFIG = "/home/jthegedus/.config/starship/config.toml"
+let-env STARSHIP_CONFIG = ('~/.config/starship/config.toml')
 # asdf config
-let-env ASDF_CONFIG_FILE = "/home/jthegedus/.config/asdf/.asdfrc"
+let-env ASDF_CONFIG_FILE = ('~/.config/asdf/.asdfrc')
 
-# Add to PATH
-#
-# Zoxide - is installed via webi: curl -sS https://webinstall.dev/zoxide | bash
-let-env PATH = ($env.PATH | append '/home/jthegedus/.local/bin')
-# asdf bins & shims
-let-env PATH = ($env.PATH | append ['/home/jthegedus/.asdf/bin', '/home/jthegedus/.asdf/shims'])
+# PATH: append to PATH if list item not already in PATH
+let-env PATH = (
+  $env.PATH
+  |
+  append (
+    [
+      # macOS for some reason was not explicitly adding the following to PATH
+      # Starship requires /urs/local/bin to be in PATH
+      '/usr/local/bin',
+      '/usr/local/sbin',
+      # Zoxide - is installed via webi: curl -sS https://webinstall.dev/zoxide | bash
+      ('~/.local/bin'),
+      # asdf bins & shims
+      ('~/.asdf/bin'),
+      ('~/.asdf/shims')
+    ]
+    |
+    reduce {
+      |it, acc|
+      if ($it not-in $env.PATH) {
+        $acc | append $it
+      }
+    }
+  )
+)
 
 # TODO(jthegedus): validate this works
 let-env rm_always_trash = true
