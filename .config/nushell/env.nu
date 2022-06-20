@@ -60,9 +60,9 @@ let-env NU_PLUGIN_DIRS = [
 # CUSTOM Configs
 #
 # starship config
-let-env STARSHIP_CONFIG = ('~/.config/starship/config.toml')
+let-env STARSHIP_CONFIG = ($env.HOME + '/.config/starship/config.toml')
 # asdf config
-let-env ASDF_CONFIG_FILE = ('~/.config/asdf/.asdfrc')
+let-env ASDF_CONFIG_FILE = ($env.HOME + '/.config/asdf/.asdfrc')
 
 # PATH: append to PATH if list item not already in PATH
 let-env PATH = (
@@ -75,10 +75,10 @@ let-env PATH = (
       '/usr/local/bin',
       '/usr/local/sbin',
       # Zoxide - is installed via webi: curl -sS https://webinstall.dev/zoxide | bash
-      ('~/.local/bin'),
+      ($env.HOME + '/.local/bin'),
       # asdf bins & shims
-      ('~/.asdf/bin'),
-      ('~/.asdf/shims')
+      ($env.HOME + '/.asdf/bin'),
+      ($env.HOME + '/.asdf/shims')
     ]
     |
     reduce {
