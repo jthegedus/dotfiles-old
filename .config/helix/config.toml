@@ -1,0 +1,13 @@
+theme = "noctis"
+#theme = "noctislux"
+
+[editor]
+true-color = true
+
+[editor.lsp]
+display-messages = true
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+

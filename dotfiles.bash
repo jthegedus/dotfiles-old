@@ -127,6 +127,11 @@ setup_config_files() {
 
 	mkdir -p "${HOME}/.config/asdf" &&
 		ln -sf "${config_root}/asdf/.asdfrc" "${HOME}/.config/asdf/.asdfrc"
+
+	mkdir -p "${HOME}/.config/helix" &&
+		ln -sf "${config_root}/helix/config.toml" "${HOME}/.config/helix/config.toml"
+	mkdir -p "${HOME}/.config/helix/runtime/themes" &&
+		ln -sf "${config_root}/helix/runtime/themes/noctis.toml" "${HOME}/.config/helix/config.toml"
 }
 
 install_tools() {
@@ -140,13 +145,16 @@ install_tools() {
 		NU_REPO="nushell/nushell"
 		NU_VERSION=$(github_repo_latest_release "${NU_REPO}")
 		NU_VERSION_UNDERSCORE=$(echo "${NU_VERSION}" | tr '.' '_')
-		DL_DIR=$(mktemp -d "${TMPDIR:-/tmp}"/dotfiles_setup.XXXX)
+		DL_DIR=$(mktemp -d "${TMPDIR:-/tmp}"/dotfiles_setup_nushell.XXXX)
 		DEST_DIR="${HOME}/.nushell"
 
 		mkdir -p "${DEST_DIR}"
 		curl --progress-bar --fail --show-error --location --output "${DL_DIR}/nu_${NU_VERSION_UNDERSCORE}_linux.tar.gz" "https://github.com/${NU_REPO}/releases/download/${NU_VERSION}/nu_${NU_VERSION_UNDERSCORE}_linux.tar.gz"
 		tar -xf "${DL_DIR}/nu_${NU_VERSION_UNDERSCORE}_linux.tar.gz" --strip-components=2 --directory "${DEST_DIR}"
 		rm "${DL_DIR}/nu_${NU_VERSION_UNDERSCORE}_linux.tar.gz"
+
+		info "Install Helix Editor"
+		warn "Do this manually"
 
 		info "Install Starship"
 		curl -fsSL https://starship.rs/install.sh | sh -s -- --yes
@@ -219,7 +227,7 @@ reminders() {
 	warn "Do not forget to setup git:"
 	printf "%s\n" "git config --global user.name ${USER}"
 	printf "%s\n" "git config --global user.email <git user email>"
-	printf "%s\n" "git config --global core.editor \"code --wait\""
+	printf "%s\n" "git config --global core.editor hx"
 	printf "%s\n" "git config --global credential.helper store"
 	printf "%s\n" "git config --global credential.helper 'cache --timeout 7200'"
 	printf "%s\n" "git config --global pull.ff only"
