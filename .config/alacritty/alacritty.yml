@@ -1,0 +1,7 @@
+dynamic_title: true
+font:
+  normal:
+    family: JetBrains Mono
+shell:
+  program: 'C:\Windows\system32\wsl.exe'
+
