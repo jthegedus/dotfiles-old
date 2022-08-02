@@ -86,15 +86,22 @@ let-env rm_always_trash = true
 
 # Aliases
 #
-alias ll = ls -al
+# ls
+alias ll = ls -ad
+# apt
 alias upd = sudo apt-get update
 alias upg = sudo apt-get upgrade -y
 alias ar = sudo apt-get autoremove -y
+# cd
 alias q = cd ~
 alias pj = cd ~/projects
+# programs
 alias df = (^df | detect columns | drop column | into filesize 1K-blocks Used Available)
 alias cat = batcat
 alias bat = batcat
 alias fd = fdfind
-alias lg = git log --all --decorate --oneline --graph
+# git
+alias gs = git status
+alias gl = git log --all --decorate --oneline --graph
+# curl
 alias gcurl = curl --header Authorization: Bearer $(gcloud auth print-identity-token)
