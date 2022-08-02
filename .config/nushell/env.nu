@@ -63,6 +63,8 @@ let-env NU_PLUGIN_DIRS = [
 let-env STARSHIP_CONFIG = ($env.HOME + '/.config/starship/config.toml')
 # asdf config
 let-env ASDF_CONFIG_FILE = ($env.HOME + '/.config/asdf/.asdfrc')
+# github cli config
+let-env BROWSER = "wslview"
 
 # PATH: lsit of paths to append to PATH
 let paths_to_append = [
