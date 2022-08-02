@@ -3,5 +3,5 @@ font:
   normal:
     family: JetBrains Mono
 shell:
-  program: 'C:\Windows\system32\wsl.exe'
+  program: 'C:\Windows\system32\wsl.exe ~'
 
