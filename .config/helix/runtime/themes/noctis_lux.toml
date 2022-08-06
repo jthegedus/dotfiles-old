@@ -181,7 +181,7 @@
 
 
 [palette] # Define your custom colors here.
-dark-green = "#00262a" # backgrounds
+dark-green = "#fef8ec" # backgrounds
 mid-green = "#073a40" # highlights
 autocomp-green = "#0d6772" # lighter than mid-green
 light-green = "#48e9a7" # strings
