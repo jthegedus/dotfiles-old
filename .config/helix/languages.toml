@@ -1,1 +1,3 @@
-/home/jthegedus/.config/helix/languages.toml
+[[language]]
+name = "v"
+file-types = ["v", "vv", "vsh"]
