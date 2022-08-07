@@ -132,7 +132,7 @@ setup_config_files() {
 		ln -sf "${config_root}/helix/config.toml" "${HOME}/.config/helix/config.toml" &&
 		ln -sf "${config_root}/helix/languages.toml" "${HOME}/.config/helix/languages.toml"
 	mkdir -p "${HOME}/.config/helix/runtime/themes" &&
-		ln -sf "${config_root}/helix/runtime/themes/noctis.toml" "${HOME}/.config/helix/config.toml"
+		ln -sf "${config_root}/helix/runtime/themes/noctis_lux.toml" "${HOME}/.config/helix/runtime/themes/noctis_lux.toml"
 }
 
 install_tools() {
