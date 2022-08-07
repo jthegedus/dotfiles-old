@@ -88,6 +88,8 @@ let-env rm_always_trash = true
 #
 # ls
 alias ll = ls -ad
+# clear
+alias cl = clear
 # apt
 alias upd = sudo apt-get update
 alias upg = sudo apt-get upgrade -y
