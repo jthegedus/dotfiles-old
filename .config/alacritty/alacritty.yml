@@ -2,6 +2,7 @@ dynamic_title: true
 font:
   normal:
     family: JetBrains Mono
+  size: 14
 shell:
   program: 'C:\Windows\system32\wsl.exe ~'
 
