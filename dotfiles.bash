@@ -142,6 +142,11 @@ install_tools() {
 		info "Update system packages"
 		sudo apt-get update && sudo apt-get upgrade
 
+		info "Install latest Git"
+		sudo add-apt-repository ppa:git-core/ppa
+		sudo apt update
+		sudo apt install git
+
 		info "Install Nushell"
 		NU_REPO="nushell/nushell"
 		NU_VERSION=$(github_repo_latest_release "${NU_REPO}")
@@ -232,6 +237,7 @@ reminders() {
 	printf "%s\n" "git config --global credential.helper store"
 	printf "%s\n" "git config --global credential.helper 'cache --timeout 7200'"
 	printf "%s\n" "git config --global pull.ff only"
+	printf "%s\n" "git config --global --add --bool push.autoSetupRemote true"
 
 	warn "You may need to restart your shell session for changes to take effect"
 }
