@@ -91,9 +91,9 @@ alias ll = ls -ad
 # clear
 alias cl = clear
 # apt
-alias upd = sudo apt-get update
-alias upg = sudo apt-get upgrade -y
-alias ar = sudo apt-get autoremove -y
+alias upd = sudo nala update
+alias upg = sudo nala upgrade
+alias ar = sudo nala autoremove
 # cd
 alias q = cd ~
 alias pj = cd ~/projects

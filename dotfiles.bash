@@ -139,13 +139,22 @@ install_tools() {
 	heading "Install tools"
 
 	if [ "$PLATFORM" == "linux" ]; then
+		info "Install Nala (apt frontend)"
+		echo "deb https://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
+		wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null
+		echo "deb-src https://deb.volian.org/volian/ scar main" | sudo tee -a /etc/apt/sources.list.d/volian-archive-scar-unstable.list
+		sudo apt update && sudo apt install nala
+
+		info "Fetch apt mirrors with Nala"
+		sudo nala fetch --auto --sources
+
 		info "Update system packages"
-		sudo apt-get update && sudo apt-get upgrade
+		sudo nala update && sudo nala upgrade
 
 		info "Install latest Git"
 		sudo add-apt-repository ppa:git-core/ppa
-		sudo apt update
-		sudo apt install git
+		sudo nala update
+		sudo nala install git
 
 		info "Install Nushell"
 		NU_REPO="nushell/nushell"
@@ -169,7 +178,7 @@ install_tools() {
 		curl -fsSL https://webinstall.dev/zoxide | bash
 
 		info "Install ripgrep, bat, fd-find"
-		sudo apt-get install ripgrep bat fd-find
+		sudo nala install ripgrep bat fd-find
 
 		info "Download asdf"
 		git clone https://github.com/asdf-vm/asdf.git "${HOME}/.asdf" || true
@@ -181,7 +190,7 @@ install_tools() {
 		rm -rf "${FONT_DIR}"
 
 		info "Install exfat support"
-		sudo apt-get install exfat-fuse -y
+		sudo nala install exfat-fuse -y
 
 		info "Increase maximum file watchers"
 		write_line_to_file_if_not_exists "fs.inotify.max_user_watches=524288" "/etc/sysctl.conf"
