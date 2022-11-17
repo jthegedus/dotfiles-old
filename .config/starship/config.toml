@@ -12,13 +12,13 @@
 # ╰─λ 
 
 format = """
-$username@$hostname in $directory at $time$battery(\n$git_branch$git_commit$git_state$git_status$git_metrics)(\n$package $c$golang$vlang$rust$zig$bun$nodejs$pulumi$terraform$gcloud)(\n$cmd_duration $status)
-$character
+[╭─](bold red)$username@$hostname in $directory at $time$battery(\n[├ ](bold red)$git_branch$git_commit$git_state$git_status$git_metrics)(\n[├ ](bold red)($package )$c$golang$vlang$rust$zig$bun$nodejs$pulumi$terraform$gcloud)(\n$cmd_duration $status)
+[╰─](bold red)$character
 """
 
 ### Line 1 - Username, Hostname, Directory, Time
 [username]
-format = "[╭─](bold red)[$user]($style)"
+format = "[$user]($style)"
 show_always = true
 style_root = "bold red"
 style_user = "bold red"
@@ -47,10 +47,11 @@ style = "bright-white"
 time_format = "%T"
 
 [battery]
-charging_symbol = "⚡️"
 disabled = false
-discharging_symbol = "💀"
+format = "[$symbol$percentage]($style)"
 full_symbol = "🔋"
+charging_symbol = "⚡️"
+discharging_symbol = "💀"
 
 [[battery.display]] # "bold red" style when capacity is between 0% and 15%
 style = "bold red"
@@ -67,7 +68,7 @@ threshold = 80
 
 ### Line 2- Git
 [git_branch]
-format = "[├ ](bold red)[$symbol$branch(:$remote_branch)]($style)"
+format = "[$symbol$branch(:$remote_branch)]($style)"
 style = "bold purple"
 
 [git_status]
@@ -81,12 +82,12 @@ style = "white"
 disabled = false
 
 
-### Line 3 - Previous Command & Exit Status
+### Line 3 - Packages, Languages/Runtimes
 [package]
-format = "[├ ](bold red)[$symbol$version]($style)"
+format = "[$symbol$version]($style)"
 
 
-### Line 4 - Packages, Languages/Runtimes
+### Line 4 - Previous Command & Exit Status
 [cmd_duration]
 disabled = false
 format = "[├ ](bold red)Last command took [$duration]($style)"
@@ -101,5 +102,5 @@ symbol = "🔴"
 
 ### Line 5 - Prompt
 [character]
-error_symbol = "[╰─](bold red)[×](bold red)"
-success_symbol = "[╰─](bold red)[λ](bold red)"
+error_symbol = "[×](bold red)"
+success_symbol = "[λ](bold red)"
