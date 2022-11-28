@@ -5,14 +5,15 @@
 # Theme based off of Garuda Linux Starship theme.
 # Modified to use more vertical space than horizontal.
 #
-# ╭─jthegedus@art in ~/dev/dotfiles at 16:18:34
+# ╭─jthegedus@art at 16:18:34
+# ├ ~/dev/dotfiles
 # ├  feat/garuda-starship-config [!?] +1 
 # ├ 📦 v0.0.1 via V v0.3.2 
 # ├ Last command took 56ms 
 # ╰─λ 
 
 format = """
-[╭─](bold red)$username@$hostname in $directory at $time$battery(\n[├ ](bold red)$git_branch$git_commit$git_state$git_status$git_metrics)(\n[├ ](bold red)($package )$c$golang$vlang$rust$zig$bun$nodejs$pulumi$terraform$gcloud)(\n$cmd_duration $status)
+[╭─](bold red)$username@$hostname at $time$battery(\n[├ ](bold red)$directory)(\n[├ ](bold red)$git_branch$git_commit$git_state$git_status$git_metrics)(\n[├ ](bold red)($package )$c$golang$vlang$rust$zig$bun$nodejs$pulumi$terraform$gcloud)(\n$cmd_duration $status)
 [╰─](bold red)$character
 """
 
@@ -29,13 +30,6 @@ format = "[$hostname]($style)"
 ssh_only = false
 style = "bold dimmed red"
 trim_at = "-"
-
-[directory]
-format = "[$path]($style)[$read_only]($read_only_style)"
-style = "bold purple"
-truncate_to_repo = false
-truncation_length = 5
-truncation_symbol = "../"
 
 [sudo]
 disabled = false
@@ -66,7 +60,16 @@ style = "bold green"
 threshold = 80
 
 
-### Line 2- Git
+### Line 2 - Directory
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style)"
+style = "bold black"
+truncate_to_repo = false
+truncation_length = 5
+truncation_symbol = "../"
+
+
+### Line 3- Git
 [git_branch]
 format = "[$symbol$branch(:$remote_branch)]($style)"
 style = "bold purple"
@@ -82,12 +85,12 @@ style = "white"
 disabled = false
 
 
-### Line 3 - Packages, Languages/Runtimes
+### Line 4 - Packages, Languages/Runtimes
 [package]
 format = "[$symbol$version]($style)"
 
 
-### Line 4 - Previous Command & Exit Status
+### Line 5 - Previous Command & Exit Status
 [cmd_duration]
 disabled = false
 format = "[├ ](bold red)Last command took [$duration]($style)"
@@ -100,7 +103,7 @@ map_symbol = true
 pipestatus = true
 symbol = "🔴"
 
-### Line 5 - Prompt
+### Line 6 - Prompt
 [character]
 error_symbol = "[×](bold red)"
 success_symbol = "[λ](bold red)"
