@@ -13,7 +13,7 @@
 # ╰─λ 
 
 format = """
-[╭─](bold red)$username@$hostname at $time$battery(\n[├ ](bold red)$directory)(\n[├ ](bold red)$git_branch$git_commit$git_state$git_status$git_metrics)(\n[├ ](bold red)($package )$c$golang$vlang$rust$zig$bun$nodejs$pulumi$terraform$gcloud)(\n$cmd_duration $status)
+[╭─](bold red)$username@$hostname at $time $battery(\n[├ ](bold red)$directory)(\n[├ ](bold red)$git_branch$git_commit$git_state$git_status$git_metrics)(\n[├ ](bold red)($package )$c$golang$vlang$rust$zig$bun$nodejs$pulumi$terraform$gcloud)(\n$cmd_duration $status)
 [╰─](bold red)$character
 """
 
