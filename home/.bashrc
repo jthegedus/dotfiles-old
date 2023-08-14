@@ -15,6 +15,8 @@ alias q="cd ~"
 alias d="cd ~/dev"
 alias gl="git log --all --decorate --oneline --graph"
 alias gs="git status"
+alias ga="git add"
+alias gc="git commit -m"
 alias gp="git push"
 
 # Terminal start
