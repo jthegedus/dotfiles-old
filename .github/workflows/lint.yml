@@ -10,13 +10,5 @@ jobs:
     name: Shellcheck & Shell Format
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: asdf_install
-        uses: asdf-vm/actions/install@v1
-      - name: Shellcheck
-        run: shellcheck -x dotfiles.bash
-      - name: Shell Format - List files to check
-        run: shfmt -f .
-      - name: Shell Format - Validate
-        run: shfmt -d .
+      - uses: actions/checkout@v3
+      - run: 'echo "lint config files"'

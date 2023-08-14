@@ -1,0 +1,9 @@
+font:
+  normal:
+    family: "JetBrains Mono"
+window:
+  opacity: 0.8
+  dynamic_title: true
+# import theme
+import:
+  - ~/.config/alacritty/themes/catppuccin-mocha.yml

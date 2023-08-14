@@ -1,0 +1,13 @@
+[user]
+	name = jthegedus
+	email = jthegedus@hey.com
+[pull]
+	ff = only
+[credential]
+	helper = cache --timeout 7200
+[core]
+	editor = hx
+[push]
+	autoSetupRemote = true
+[color]
+	ui = auto

@@ -10,12 +10,26 @@
 # ├  feat/garuda-starship-config [!?] +1 
 # ├ 📦 v0.0.1 via V v0.3.2 
 # ├ Last command took 56ms 
-# ╰─λ 
+# ╰─λ
 
-format = """
-[╭─](bold red)$username@$hostname at $time $battery(\n[├ ](bold red)$directory)(\n[├ ](bold red)$git_branch$git_commit$git_state$git_status$git_metrics)(\n[├ ](bold red)($package )$c$golang$vlang$rust$zig$bun$nodejs$pulumi$terraform$gcloud)(\n$cmd_duration $status)
+#╭─jt@art ~/dev/dotfiles  [x!?] +31 -1018                                      󰁽 64% 18:33:38
+#╰─λ                                                                                  took 3ms 
+
+
+#old_format = '''
+#[╭─](bold red)$username@$hostname at $time $battery
+#[├ ](bold red)$directory
+#[├ ](bold red)$git_branch$git_commit$git_state$git_status$git_metrics
+#[├ ](bold red)($package )$c$golang$vlang$rust$zig$bun$nodejs$pulumi$terraform$gcloud
+#[├ ]$cmd_duration $status
+#[╰─](bold red)$character
+#'''
+
+format = '''
+[╭─](bold red)$username@$hostname $directory $git_branch$git_commit$git_state$git_status$git_metrics
 [╰─](bold red)$character
-"""
+'''
+
 
 ### Line 1 - Username, Hostname, Directory, Time
 [username]
@@ -63,7 +77,7 @@ threshold = 80
 ### Line 2 - Directory
 [directory]
 format = "[$path]($style)[$read_only]($read_only_style)"
-style = "bold black"
+style = "bold white"
 truncate_to_repo = false
 truncation_length = 5
 truncation_symbol = "../"
