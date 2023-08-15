@@ -117,6 +117,7 @@
       zoxide
       # dev tools
       alacritty
+      difftastic
       gh
       git
       helix
