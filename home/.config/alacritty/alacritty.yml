@@ -2,7 +2,7 @@ font:
   normal:
     family: "JetBrains Mono"
 window:
-  opacity: 0.8
+  opacity: 0.90
   dynamic_title: true
 # import theme
 import:
