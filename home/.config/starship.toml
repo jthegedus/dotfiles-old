@@ -1,21 +1,14 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Docs - https://starship.rs/config/
-# Theme based off of Garuda Linux Starship theme.
-# Modified to use more vertical space than horizontal.
+# Starship Docs - https://starship.rs/config/
 #
-# ╭─jthegedus@art at 16:18:34
-# ├ ~/dev/dotfiles
-# ├  feat/garuda-starship-config [!?] +1 
-# ├ 📦 v0.0.1 via V v0.3.2 
-# ├ Last command took 56ms 
-# ╰─λ
-
+# Current format
+#
 #╭─jt@art ~/dev/dotfiles  [x!?] +31 -1018                                      󰁽 64% 18:33:38
 #╰─λ                                                                                  took 3ms 
 
-
+# Old theme. A modified Garuda Linux theme to occupy more vertical space.
 #old_format = '''
 #[╭─](bold red)$username@$hostname at $time $battery
 #[├ ](bold red)$directory
@@ -25,9 +18,15 @@
 #[╰─](bold red)$character
 #'''
 
+# Gohan theme
+# purple = #7f3fbf
+# blue = #279aff
+# yellow = #fce983
+# teal = #249470
+
 format = '''
-[╭─](bold red)$username@$hostname $directory $git_branch$git_commit$git_state$git_status$git_metrics$fill$battery $time
-[╰─](bold red)$character
+[╭─](bold #7f3fbf)$username[@](bold )$hostname $directory $git_branch$git_commit$git_state$git_status$git_metrics$fill$battery $time
+[╰─](bold #7f3fbf)$character
 '''
 
 right_format = '''
@@ -41,14 +40,14 @@ symbol = ' '
 [username]
 format = "[$user]($style)"
 show_always = true
-style_root = "bold red"
-style_user = "bold red"
+style_root = "bold #7f3fbf"
+style_user = "bold #7f3fbf"
 
 [hostname]
 disabled = false
 format = "[$hostname]($style)"
 ssh_only = false
-style = "bold dimmed red"
+style = "bold #7f3fbf"
 trim_at = "-"
 
 [sudo]
@@ -72,15 +71,14 @@ style = "bold red"
 threshold = 15
 
 [[battery.display]] # "bold yellow" style when capacity is between 15% and 50%
-style = "bold yellow"
+style = "bold #fce983"
 threshold = 50
 
 [[battery.display]] # "bold green" style when capacity is between 50% and 80%
-style = "bold green"
+style = "bold #249470"
 threshold = 80
 
-
-### Line 2 - Directory
+### Directory
 [directory]
 format = "[$path]($style)[$read_only]($read_only_style)"
 style = "bold white"
@@ -88,42 +86,44 @@ truncate_to_repo = false
 truncation_length = 5
 truncation_symbol = "../"
 
-
-### Line 3- Git
+### Git
 [git_branch]
 format = "[$symbol$branch(:$remote_branch)]($style)"
-style = "bold purple"
+style = "bold #7f3fbf"
 
 [git_status]
 ahead = "⇡${count}"
 behind = "⇣${count}"
 deleted = "x"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-style = "white"
+style = "#fce983"
 
 [git_metrics]
 disabled = false
+added_style = "#279aff"
+deleted_style = "#279aff"
 
-
-### Line 4 - Packages, Languages/Runtimes
+### Packages, Languages/Runtimes
 [package]
 format = "[$symbol$version]($style)"
 
 
-### Line 5 - Previous Command & Exit Status
+### Previous Command & Exit Status
 [cmd_duration]
 disabled = false
-format = "Last command took [$duration]($style)"
+format = "[$duration]($style)"
 min_time = 1
+style = "#fce983"
 
 [status]
 disabled = false
-format = ' & exited with [\[$status$status_common_meaning$status_signal_name$status_maybe_int\]]($style)'
+format = ' [\[$status$status_common_meaning$status_signal_name$status_maybe_int\]]($style)'
 map_symbol = true
 pipestatus = true
 symbol = "🔴"
+style = "#fce983"
 
-### Line 6 - Prompt
+### Prompt
 [character]
 error_symbol = "[×](bold red)"
-success_symbol = "[λ](bold red)"
+success_symbol = "[λ](bold #7f3fbf)"
