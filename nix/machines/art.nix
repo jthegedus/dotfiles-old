@@ -117,6 +117,7 @@
       zoxide
       # dev tools
       alacritty
+      gh
       git
       helix
       nixfmt
