@@ -117,6 +117,7 @@
       zoxide
       # dev tools
       alacritty
+      choose
       difftastic
       gh
       git
