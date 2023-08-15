@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
 
-NIXOS_CONFIG="$HOME/dev/dotfiles/nix/machines/$(hostname).nix"
+NIXOS_MACHINE_CONFIGS="$HOME/dev/dotfiles/nix/machines/"
 
-printf "%s\n" "Do you wish to reload the NixOS configuration?"
-printf "\t%s \e[4m%s\e[0m\n" "For machine" "$(hostname)"
-printf "\t%s \e[4m%s\e[0m\n" "Config from" "${NIXOS_CONFIG}"
+printf "%s\n" "Which machine do you wish to reload the NixOS configuration for?"
 
-select yn in "Yes" "No"; do
+# $1: the filename of the nix machine config to load
+function nixos_rebuild {
+  printf "%s \e[4m%s\e[0m\n" "Loading config from" "${NIXOS_MACHINE_CONFIGS}${1}.nix"
+  sudo nixos-rebuild switch -I nixos-config="${NIXOS_MACHINE_CONFIGS}${1}.nix"
+}
+
+select yn in "art" "work" "quit"; do
   case $yn in
-    Yes ) sudo nixos-rebuild switch -I nixos-config="$NIXOS_CONFIG"; break;;
-    No ) exit;;
+    art ) nixos_rebuild art; break;;
+    work ) nixos_rebuild work; break;;
+    quit ) exit;;
   esac
 done
 
