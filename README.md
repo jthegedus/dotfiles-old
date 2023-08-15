@@ -38,6 +38,7 @@ We want configurations for both NixOS and Nix for software management across mac
 - [ ] use nix-index-database
 - [-] lenovo machine config
 - [ ] macOS machine config
+- [ ] mark code/config that should be changed for other consumers of this repo
 
 ---
 
