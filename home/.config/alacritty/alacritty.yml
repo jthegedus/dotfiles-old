@@ -7,7 +7,7 @@ window:
 cursor:
   style:
     blinking: Always
-  blink_interval: 500
+  blink_interval: 750
   blink_timeout: 0
 
 # import theme
