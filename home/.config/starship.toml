@@ -26,10 +26,16 @@
 #'''
 
 format = '''
-[╭─](bold red)$username@$hostname $directory $git_branch$git_commit$git_state$git_status$git_metrics
+[╭─](bold red)$username@$hostname $directory $git_branch$git_commit$git_state$git_status$git_metrics$fill$battery $time
 [╰─](bold red)$character
 '''
 
+right_format = '''
+$cmd_duration$status
+'''
+
+[fill]
+symbol = ' '
 
 ### Line 1 - Username, Hostname, Directory, Time
 [username]
@@ -107,12 +113,12 @@ format = "[$symbol$version]($style)"
 ### Line 5 - Previous Command & Exit Status
 [cmd_duration]
 disabled = false
-format = "[├ ](bold red)Last command took [$duration]($style)"
+format = "Last command took [$duration]($style)"
 min_time = 1
 
 [status]
 disabled = false
-format = '& exited with [\[$status$status_common_meaning$status_signal_name$status_maybe_int\]]($style)'
+format = ' & exited with [\[$status$status_common_meaning$status_signal_name$status_maybe_int\]]($style)'
 map_symbol = true
 pipestatus = true
 symbol = "🔴"
