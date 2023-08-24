@@ -1,44 +1,20 @@
 <div align="center">
 
-# Dotfiles & Developer Environment ![Lint](https://github.com/jthegedus/asdf-firebase/workflows/Lint/badge.svg)
+# Dotfiles & Developer Environment
 
-Cross-platform dotfiles & developer environment with NixOS. 
+Cross-platform dotfiles & developer environment.
 
 </div>
 
-- files under `home` are loaded by NixOS to the home directory `~`.
-- `nix` contains the NixOS configurations
-- `./reload.bash` is a simple script to rebuild NixOS where the config is matched with the current machine hostname in `nix/machines/<machine-name>.nix`
+```shell
+TODO: curl binary
+```
 
-NixOS structure
+## Features
 
-- `nix/machines/<machine-name>.nix`: rebuild nixos from these files
-- `nix/common/*`: per-program configurations
-- `nix/global-configuration.nix`: shared global configuration (home manager)
-
-## TODO
-
-We want configurations for both NixOS and Nix for software management across machines. 
-
-- what apps should be system vs user installed?
-- [x] Home Manager
-- [ ] flakes?
-- [-] separate config like https://github.com/Maxwell-lt/machine-configuration ???
-    - [-] hardware configurations
-    - [ ] OS (Nix, macOS) specific configurations
-    - [ ] generic application configurations
-- [ ] gnome window manager configuration
-- [ ] hyprland window manager configuration
-- [ ] qtile window manager configuration
-- shell configurations
-    - [x] fish shell
-    - [-] starship
-    - [x] shell aliases
-    - [x] shell theme
-- [ ] use nix-index-database
-- [-] lenovo machine config
-- [ ] macOS machine config
-- [ ] mark code/config that should be changed for other consumers of this repo
+- symlink files recursively from one directory to another
+  - EG: symlink files under `home/**` to `$HOME/`
+- install tools from provided `tools.json` file
 
 ---
 
