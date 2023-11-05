@@ -1,25 +1,24 @@
-# Binaries for programs and plugins
-main
-dot
-dotfiles
-*.exe
-*.exe~
-*.so
-*.dylib
-*.dll
+# Allowlisting gitignore template for GO projects prevents us
+# from adding various unwanted local files, such as generated
+# files, developer configurations or IDE-specific files etc.
+#
+# Recommended: Go.AllowList.gitignore
 
-# Ignore binary output folders
-bin/
+# Ignore everything
+*
 
-# Ignore common editor/system specific metadata
-.DS_Store
-.idea/
-.vscode/
-*.iml
+# But not these files...
+!/.gitignore
 
-# ENV
-.env
+!*.go
+!go.sum
+!go.mod
 
-# vweb and database
-*.db
-*.js
+!README.md
+!LICENSE
+
+# ...even if they are in subdirectories
+!*/
+!home/**/*
+!.github/**/*
+!.golangci.yml

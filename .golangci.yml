@@ -1,0 +1,45 @@
+run:
+  deadline: 5m
+
+linters:
+  disable-all: true
+  enable:
+    #- bodyclose
+    #- depguard
+    #- dogsled
+    #- dupl
+    - errcheck
+    #- exhaustive
+    #- funlen
+    - gas
+    #- gochecknoinits
+    - goconst
+    #- gocritic
+    #- gocyclo
+    #- gofmt
+    - goimports
+    - golint
+    #- gomnd
+    #- goprintffuncname
+    #- gosec
+    #- gosimple
+    - govet
+    - ineffassign
+    - interfacer
+    #- lll
+    - maligned
+    - megacheck
+    #- misspell
+    #- nakedret
+    #- noctx
+    #- nolintlint
+    #- rowserrcheck
+    #- scopelint
+    #- staticcheck
+    #- stylecheck
+    #- typecheck
+    - unconvert
+    #- unparam
+    - unused
+    #- whitespace
+  fast: false
