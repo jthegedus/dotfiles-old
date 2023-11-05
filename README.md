@@ -29,18 +29,17 @@ Configuration can be seen in this repositories `home` directory.
 ## Tools without Configurations
 
 * [`bat`](https://github.com/sharkdp/bat): A cat(1) clone with wings
-* [`bottom`](): 
+* [`bottom`](https://github.com/ClementTsang/bottom): Yet another cross-platform graphical process/system monitor
 * [`choose`](https://github.com/theryangeary/choose): A human-friendly and fast alternative to `cut` and (sometimes) `awk`
-* [`difftastic`](https://difftastic.wilfred.me.uk/): a structural diff tool that understands syntax
+* [`difftastic`](https://difftastic.wilfred.me.uk/): A structural diff tool that understands syntax
 * [`fd`](https://github.com/sharkdp/fd): A simple, fast and user-friendly alternative to 'find'
-* [`gh`](): 
-* [`gotop`](): 
+* [`gh`](https://github.com/cli/cli): GitHub’s official command line tool
+* [`gotop`](https://github.com/xxxserxxx/gotop): A terminal based graphical activity monitor inspired by gtop and vtop
 * [`nala`](https://github.com/volitank/nala): a wrapper for the apt package manager
-* [`nvtop`](): 
-* [`ranger`](): 
+* [`nvtop`](https://github.com/Syllo/nvtop): GPUs process monitoring for AMD, Intel and NVIDIA
+* [`ranger`](https://github.com/ranger/ranger): A VIM-inspired filemanager for the console
 * [`ripgrep`](https://github.com/BurntSushi/ripgrep): recursively search directories for a regex pattern while respecting your gitignore
-* [`tealdeer`](): 
-* [`ventoy`](): 
+* [`tealdeer`](https://github.com/dbrgn/tealdeer): A very fast implementation of [tldr](https://github.com/tldr-pages/tldr) in Rust.
 * [`vscode`](https://code.visualstudio.com/): code editor
 * [`zoxide`](https://github.com/ajeetdsouza/zoxide): A smarter cd command
 
