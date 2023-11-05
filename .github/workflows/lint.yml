@@ -6,9 +6,50 @@ on:
   pull_request:
 
 jobs:
-  test:
-    name: Shellcheck & Shell Format
+  go:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - run: 'echo "lint config files"'
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+      - uses: golangci/golangci-lint-action@v3
+        with:
+          version: latest
+
+  fish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ludeeus/action-shellcheck@master
+        with:
+          shell: fish
+
+  toml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check toml files
+        uses: docker://creydr/tomllint
+
+  yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check yaml files
+        uses: ibiqlik/action-yamllint@v3
+
+  shell_scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ludeeus/action-shellcheck@master
+
+  github_actions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check workflow files
+        uses: docker://rhysd/actionlint:1.6.24
+        with:
+          args: -color
