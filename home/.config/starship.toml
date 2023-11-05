@@ -5,20 +5,10 @@
 #
 # Current format
 #
-#╭─jt@art ~/dev/dotfiles  [x!?] +31 -1018                                      󰁽 64% 18:33:38
+#╭─jt@pop ~/dev/dotfiles  [x!?] +31 -1018                                      󰁽 64% 18:33:38
 #╰─λ                                                                                  took 3ms 
 
-# Old theme. A modified Garuda Linux theme to occupy more vertical space.
-#old_format = '''
-#[╭─](bold red)$username@$hostname at $time $battery
-#[├ ](bold red)$directory
-#[├ ](bold red)$git_branch$git_commit$git_state$git_status$git_metrics
-#[├ ](bold red)($package )$c$golang$vlang$rust$zig$bun$nodejs$pulumi$terraform$gcloud
-#[├ ]$cmd_duration $status
-#[╰─](bold red)$character
-#'''
-
-# Gohan theme
+# Theme
 # purple = #7f3fbf
 # blue = #279aff
 # yellow = #fce983
@@ -106,7 +96,6 @@ deleted_style = "#279aff"
 ### Packages, Languages/Runtimes
 [package]
 format = "[$symbol$version]($style)"
-
 
 ### Previous Command & Exit Status
 [cmd_duration]

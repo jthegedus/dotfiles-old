@@ -1,6 +1,6 @@
 font:
   normal:
-    family: "JetBrains Mono"
+    family: "Commit Mono"
 window:
   opacity: 0.90
   dynamic_title: true
