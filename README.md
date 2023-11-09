@@ -10,18 +10,14 @@ Cross-platform dotfiles. Go CLI to recursively symlink files from one directory 
 * clone repo
 
   ```shell
-  mkdir ~/dev && git clone https://github.com/jthegedus/dotfiles ~/dev
+  git clone https://github.com/jthegedus/dotfiles ~/dev
   ```
 
-* run from your dotfiles root directory:
+* run the script to symlink dotfiles:
 
   ```shell
-  bash -c "find ~/dev/dotfiles/home -type f -exec sh -c 'ln --verbose --symbolic --force ~/dev/dotfiles/home/{} ~/${0#*.}' {} \;"
+  ~/dev/dotfiles/setup.bash
   ```
-
-  <!-- bash -c "find ~/dev/dotfiles/home -type f -exec ln --verbose --symbolic --force {} ~ \;" -->
-<!--   cp --interactive --recursive --symbolic-link --verbose ~/dev/dotfiles/home ~ -->
-<!-- bash -c "cd ~/dev/dotfiles/home && find . -type f -exec cp --interactive --parents --symbolic-link --verbose {} ~ \;" -->
 
 ## Tools
 
