@@ -23,10 +23,10 @@ jobs:
         with:
           shell: bash
           ignore_paths: >-
-            './home/.config/fish/'
-            './home/.bashrc'
-            './home/.bashrc_default'
-            './home/.profile'
+            '**/home/.config/fish/'
+            '**/home/.bashrc'
+            '**/home/.bashrc_default'
+            '**/home/.profile'
 
   github_actions:
     runs-on: ubuntu-latest
