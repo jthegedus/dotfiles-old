@@ -1,0 +1,15 @@
+font:
+  normal:
+    family: "Commit Mono"
+window:
+  opacity: 0.90
+  dynamic_title: true
+cursor:
+  style:
+    blinking: Always
+  blink_interval: 750
+  blink_timeout: 0
+
+# import theme
+import:
+  - ~/.config/alacritty/themes/catppuccin-mocha.yml

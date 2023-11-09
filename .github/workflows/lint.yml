@@ -6,17 +6,27 @@ on:
   pull_request:
 
 jobs:
-  test:
-    name: Shellcheck & Shell Format
+  fish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: asdf_install
-        uses: asdf-vm/actions/install@v1
-      - name: Shellcheck
-        run: shellcheck -x dotfiles.bash
-      - name: Shell Format - List files to check
-        run: shfmt -f .
-      - name: Shell Format - Validate
-        run: shfmt -d .
+      - uses: actions/checkout@v4
+      - uses: ludeeus/action-shellcheck@master
+        with:
+          scandir: "./home/.config/fish/"
+          shell: fish
+
+  shell_scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: asdf-vm/actions/install@v3
+      - run: scripts/lint.bash
+
+  github_actions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check workflow files
+        uses: docker://rhysd/actionlint:1.6.24
+        with:
+          args: -color

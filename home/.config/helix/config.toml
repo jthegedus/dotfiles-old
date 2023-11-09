@@ -1,0 +1,14 @@
+theme = "my_catppuccin_mocha"
+
+[editor]
+true-color = true
+
+[editor.file-picker]
+hidden = false
+
+[editor.lsp]
+display-messages = true
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
