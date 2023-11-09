@@ -19,10 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ludeeus/action-shellcheck@master
-        with:
-          shell: bash
-          scandir: './setup.bash'
+      - uses: asdf-vm/actions/install@v3
+      - run: scripts/lint.bash
 
   github_actions:
     runs-on: ubuntu-latest
