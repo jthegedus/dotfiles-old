@@ -24,10 +24,9 @@ jobs:
           shell: bash
           ignore_paths: >-
             './home/.config/fish/'
-          ignore_names: >-
-            '.bashrc'
-            '.bashrc_default'
-            '.profile'
+            './home/.bashrc'
+            './home/.bashrc_default'
+            './home/.profile'
 
   github_actions:
     runs-on: ubuntu-latest
