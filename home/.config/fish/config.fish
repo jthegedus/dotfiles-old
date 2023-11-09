@@ -16,6 +16,11 @@ alias ga='git add'
 alias gc='git commit -m'
 alias gp='git push'
 
+# Source asdf if installed
+if test -f ~/.asdf/asdf.fish
+    source ~/.asdf/asdf.fish
+end
+
 # Terminal start
 if type "macchina" > /dev/null 2>&1
     macchina
