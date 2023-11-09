@@ -22,11 +22,7 @@ jobs:
       - uses: ludeeus/action-shellcheck@master
         with:
           shell: bash
-          ignore_paths: >-
-            '**/home/.config/fish/'
-            '**/home/.bashrc'
-            '**/home/.bashrc_default'
-            '**/home/.profile'
+          scandir: './setup.bash'
 
   github_actions:
     runs-on: ubuntu-latest
