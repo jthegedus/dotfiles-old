@@ -3,7 +3,7 @@
 
 # Dotfiles
 
-Cross-platform dotfiles. Go CLI to recursively symlink files from one directory to another.
+Cross-platform dotfiles.
 
 </div>
 
@@ -18,6 +18,8 @@ Cross-platform dotfiles. Go CLI to recursively symlink files from one directory 
   ```shell
   ~/dev/dotfiles/setup.bash
   ```
+
+* Now install the tools & software using your favourite package manager.
 
 ## Tools
 
