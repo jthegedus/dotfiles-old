@@ -1,14 +1,19 @@
-font:
-  normal:
-    family: "Commit Mono"
-window:
-  opacity: 0.90
-  dynamic_title: true
 cursor:
   style:
     blinking: Always
   blink_interval: 750
   blink_timeout: 0
+font:
+  normal:
+    family: "Commit Mono"
+shell:
+  program: /usr/bin/fish
+  args:
+    - --login
+    - --interactive
+window:
+  opacity: 0.90
+  dynamic_title: true
 
 # import theme
 import:
