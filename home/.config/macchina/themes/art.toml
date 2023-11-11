@@ -41,13 +41,13 @@ key_color = false
 separator_color = false
 
 [keys]
-distro = "❇  distro"
-kernel = "⚙️  kernel"
-packages = "📦 packages"
-terminal = "🗔  terminal"
-shell = "꩜  shell"
-machine = "💻 machine"
-cpu = "⚔  cpu"
-memory = "⚔  memory"
-de = "💻 de"
-wm = "🗗  wm"
+distro = "distro"
+kernel = "kernel"
+packages = "packages"
+terminal = "terminal"
+shell = "shell"
+machine = "machine"
+cpu = "cpu"
+memory = "memory"
+de = "de"
+wm = "wm"
