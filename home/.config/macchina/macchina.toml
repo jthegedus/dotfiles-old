@@ -1,0 +1,12 @@
+theme = "art"
+show = [
+    "Distribution",
+    "OperatingSystem",
+    "Kernel",
+    "Packages",
+    "Terminal",
+    "Shell",
+    "Machine",
+    "Processor",
+    "Memory",
+]
