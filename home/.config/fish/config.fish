@@ -1,6 +1,6 @@
 # Aliases
 if type "macchina" > /dev/null 2>&1
-  alias cl='clear && macchina && ll'
+  alias cl='clear && macchina'
 end
 if type "exa" > /dev/null 2>&1
     alias ll='exa -al --group-directories-first -I .git'
@@ -27,10 +27,6 @@ if type "macchina" > /dev/null 2>&1
 else
     printf "Warning: macchina command not found.\n"
 end
-
-## List dirs
-ll
-printf "\n"
 
 if type "starship" > /dev/null 2>&1
     starship init fish | source
