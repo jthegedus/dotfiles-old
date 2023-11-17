@@ -21,6 +21,10 @@ if test -f ~/.asdf/asdf.fish
     source ~/.asdf/asdf.fish
 end
 
+if test -f ~/.asdf/plugins/golang/set-env.fish
+    source ~/.asdf/plugins/golang/set-env.fish
+end
+
 # Terminal start
 if type "macchina" > /dev/null 2>&1
     macchina
