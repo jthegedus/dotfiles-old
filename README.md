@@ -36,7 +36,7 @@ Tools I use:
 
 Configuration can be seen in this repositories `home` directory.
 
-### Tools without Configurations
+### Tools without custom Configurations
 
 * [`bat`](https://github.com/sharkdp/bat): A cat(1) clone with wings
 * [`bottom`](https://github.com/ClementTsang/bottom): Yet another cross-platform graphical process/system monitor
@@ -57,7 +57,7 @@ Configuration can be seen in this repositories `home` directory.
 
 Manual configurations I set for OSs.
 
-Gnome-based OSs:
+Linux with Gnome:
 
 * set tab switching swap all app windows not just apps:
   * Settings > Keyboard > customize keyboard shortcuts > Navigation > Switch Windows: set to use the keyboard combo you like, eg: `alt`+`tab`
