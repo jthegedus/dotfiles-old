@@ -26,7 +26,7 @@ Cross-platform dotfiles.
 Tools I use:
 
 * fonts: [commitmono](https://commitmono.com/), which has a [Nerd Fonts patch](https://github.com/ryanoasis/nerd-fonts).
-* `ls`: [exa/eza](https://eza.rocks/)
+* `ls`: [eza](https://eza.rocks/)
 * prompt: [starship](https://starship.rs/)
 * shell: [fish](https://fishshell.com/) (with similar [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) config)
 * system information: [macchina](https://github.com/Macchina-CLI/macchina)
