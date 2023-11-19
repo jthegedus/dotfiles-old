@@ -25,7 +25,7 @@ Cross-platform dotfiles.
 
 Tools I use:
 
-* fonts: [commitmono](https://commitmono.com/)
+* fonts: [commitmono](https://commitmono.com/), which has a [Nerd Fonts patch](https://github.com/ryanoasis/nerd-fonts).
 * `ls`: [exa/eza](https://eza.rocks/)
 * prompt: [starship](https://starship.rs/)
 * shell: [fish](https://fishshell.com/) (with similar [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) config)
@@ -36,7 +36,7 @@ Tools I use:
 
 Configuration can be seen in this repositories `home` directory.
 
-## Tools without Configurations
+### Tools without Configurations
 
 * [`bat`](https://github.com/sharkdp/bat): A cat(1) clone with wings
 * [`bottom`](https://github.com/ClementTsang/bottom): Yet another cross-platform graphical process/system monitor
@@ -63,6 +63,7 @@ Gnome-based OSs:
   * Settings > Keyboard > customize keyboard shortcuts > Navigation > Switch Windows: set to use the keyboard combo you like, eg: `alt`+`tab`
 * set interactive screenshot tool:
   * Settings > Keyboard > customize keyboard shortcuts > Screenshots > Take a Screenshot Interactively: set to use the keyboard combo you like, eg: `shift`+`super`+`s`
+* Install Gnome extension for [Forge](https://github.com/forge-ext/forge) tiling window manager
 
 Windows:
 
