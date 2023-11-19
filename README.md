@@ -50,6 +50,7 @@ Configuration can be seen in this repositories `home` directory.
 * [`ranger`](https://github.com/ranger/ranger): A VIM-inspired filemanager for the console
 * [`ripgrep`](https://github.com/BurntSushi/ripgrep): recursively search directories for a regex pattern while respecting your gitignore
 * [`tealdeer`](https://github.com/dbrgn/tealdeer): A very fast implementation of [tldr](https://github.com/tldr-pages/tldr) in Rust.
+* [`ugrep`](https://github.com/Genivia/ugrep): an ultra fast, user-friendly, compatible grep.
 * [`vscode`](https://code.visualstudio.com/): code editor
 * [`zoxide`](https://github.com/ajeetdsouza/zoxide): A smarter cd command
 
