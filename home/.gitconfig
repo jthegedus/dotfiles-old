@@ -1,10 +1,36 @@
-[pull]
-	ff = only
 [credential]
 	helper = cache --timeout 7200
-[core]
-	editor = hx
+
 [push]
 	autoSetupRemote = true
+
+[pull]
+	ff = only
+
 [color]
 	ui = auto
+
+[core]
+	pager = delta
+	editor = hx
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	# use n and N to move between diff sections
+	navigate = true
+
+	# delta detects terminal colors automatically; set one of these to disable auto-detection
+	# dark = true
+	# light = true
+
+[merge]
+	conflictstyle = diff3
+
+[diff]
+	colorMoved = default
+
+# Include user & email config from non-shared Git config file
+[includeIf "gitdir:~/dev/"]
+  path = ~/dev/.gitconfig-dev

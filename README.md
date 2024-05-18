@@ -1,5 +1,4 @@
-<!-- markdownlint-disable-next-line -->
-<div align="center">
+<div style="text-align: center;">
 
 # Dotfiles
 
@@ -7,19 +6,19 @@ Cross-platform dotfiles.
 
 </div>
 
-* clone repo
+1. clone repo
 
   ```shell
-  git clone https://github.com/jthegedus/dotfiles ~/dev
+  git clone https://github.com/jthegedus/dotfiles ~/dev/dotfiles
   ```
 
-* run the script to symlink dotfiles:
+2. run the script to symlink dotfiles:
 
   ```shell
   ~/dev/dotfiles/setup.bash
   ```
 
-* Now install the tools & software using your favourite package manager.
+3. Now install the tools & software using your favourite package manager.
 
 ## Tools
 
@@ -41,6 +40,7 @@ Configuration can be seen in this repositories `home` directory.
 * [`bat`](https://github.com/sharkdp/bat): A cat(1) clone with wings
 * [`bottom`](https://github.com/ClementTsang/bottom): Yet another cross-platform graphical process/system monitor
 * [`choose`](https://github.com/theryangeary/choose): A human-friendly and fast alternative to `cut` and (sometimes) `awk`
+* [`delta`](https://github.com/dandavison/delta): A syntax-highlighting pager for git, diff, grep, and blame output
 * [`difftastic`](https://difftastic.wilfred.me.uk/): A structural diff tool that understands syntax
 * [`fd`](https://github.com/sharkdp/fd): A simple, fast and user-friendly alternative to 'find'
 * [`gh`](https://github.com/cli/cli): GitHub’s official command line tool
@@ -50,7 +50,7 @@ Configuration can be seen in this repositories `home` directory.
 * [`ranger`](https://github.com/ranger/ranger): A VIM-inspired filemanager for the console
 * [`ripgrep`](https://github.com/BurntSushi/ripgrep): recursively search directories for a regex pattern while respecting your gitignore
 * [`tealdeer`](https://github.com/dbrgn/tealdeer): A very fast implementation of [tldr](https://github.com/tldr-pages/tldr) in Rust.
-* [`ugrep`](https://github.com/Genivia/ugrep): an ultra fast, user-friendly, compatible grep.
+* [`ugrep`](https://github.com/Genivia/ugrep): an ultra-fast, user-friendly, compatible grep.
 * [`vscode`](https://code.visualstudio.com/): code editor
 * [`zoxide`](https://github.com/ajeetdsouza/zoxide): A smarter cd command
 
