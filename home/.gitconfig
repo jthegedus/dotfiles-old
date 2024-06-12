@@ -32,5 +32,8 @@
 	colorMoved = default
 
 # Include user & email config from non-shared Git config file
+#
+# NOTE: you will need to run `git init` in the specified directory, in this example,
+#       "~/dev", so that the ".git" folder is created and then recognised by this feature
 [includeIf "gitdir:~/dev/"]
   path = ~/dev/.gitconfig-dev
