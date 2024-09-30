@@ -60,11 +60,11 @@ Manual configurations I set for OSs.
 
 Linux with Gnome:
 
-* set tab switching swap all app windows not just apps:
-  * Settings > Keyboard > customize keyboard shortcuts > Navigation > Switch Windows: set to use the keyboard combo you like, eg: `alt`+`tab`
-* set interactive screenshot tool:
-  * Settings > Keyboard > customize keyboard shortcuts > Screenshots > Take a Screenshot Interactively: set to use the keyboard combo you like, eg: `shift`+`super`+`s`
-* Install Gnome extension for [Forge](https://github.com/forge-ext/forge) tiling window manager
+* super+t: open terminal
+* super+q: close application window
+* super+e: open files to `~`
+* super+return: open search
+* super+shift+s: take screenshot interactively
 
 Windows:
 
