@@ -1,3 +1,5 @@
+>This repository is deprecated. I no longer use the methods in this repository to manage my dotfiles. See https://github.com/jthegedus/dotfiles *soon*(tm) for updates.
+
 <div style="text-align: center;">
 
 # Dotfiles
